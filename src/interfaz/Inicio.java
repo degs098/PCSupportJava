@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
+import pcsupport.Login;
 
 /**
  *
@@ -17,31 +18,30 @@ public class Inicio extends javax.swing.JFrame {
 
     /**
      * Creates new form Inicio
-     */    
+     */
     Software sw = new Software();
     Hardware hw = new Hardware();
     Redes rd = new Redes();
-    
+
     public Inicio() {
         initComponents();
-        super.setLocationRelativeTo(null);        
-        
+        super.setLocationRelativeTo(null);
+
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
         contentPane.add(sw);
         contentPane.add(hw);
         contentPane.add(rd);
-        
+
         hw.setVisible(false);
         sw.setVisible(false);
         rd.setVisible(false);
-        
+
         hw.setBounds(375, 75, 650, 530);
         sw.setBounds(375, 75, 650, 530);
         rd.setBounds(375, 75, 650, 530);
-        
+
     }
-        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -254,6 +254,11 @@ public class Inicio extends javax.swing.JFrame {
         jLabelLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelLogin.setForeground(new java.awt.Color(255, 255, 255));
         jLabelLogin.setText("Login");
+        jLabelLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelLoginMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
         Login.setLayout(LoginLayout);
@@ -285,7 +290,7 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -369,13 +374,17 @@ public class Inicio extends javax.swing.JFrame {
         Login.setBackground(new java.awt.Color(244, 244, 244));
         jLabelLogin.setForeground(Color.BLACK);
         setCursor(Cursor.HAND_CURSOR);
+
+
     }//GEN-LAST:event_LoginMouseEntered
+
 
     private void LoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseExited
         Login.setBackground(new java.awt.Color(0, 106, 193));
         jLabelLogin.setForeground(Color.WHITE);
         setCursor(Cursor.DEFAULT_CURSOR);
     }//GEN-LAST:event_LoginMouseExited
+
 
     private void SwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SwMouseClicked
         sw.setVisible(true);
@@ -387,6 +396,7 @@ public class Inicio extends javax.swing.JFrame {
         hw.setVisible(true);
         sw.setVisible(false);
         rd.setVisible(false);
+
     }//GEN-LAST:event_HwMouseClicked
 
     private void RdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RdMouseClicked
@@ -394,6 +404,11 @@ public class Inicio extends javax.swing.JFrame {
         hw.setVisible(false);
         sw.setVisible(false);
     }//GEN-LAST:event_RdMouseClicked
+
+    private void jLabelLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseClicked
+        Login lo = new Login();
+        lo.setVisible(true);
+    }//GEN-LAST:event_jLabelLoginMouseClicked
 
     /**
      * @param args the command line arguments
@@ -409,32 +424,21 @@ public class Inicio extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
-
-catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
-
-catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
-
-catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Inicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Inicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Inicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
