@@ -20,7 +20,7 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
-    String ruta = "/imagenes/";
+    String ruta = "/imagenes/";    
     ImageIcon imagen = new ImageIcon(ruta + "Help.png");
     Software sw = new Software();
     Hardware hw = new Hardware();
@@ -269,6 +269,12 @@ public class Inicio extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelLoginMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelLoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelLoginMouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
@@ -420,18 +426,40 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_RdMouseClicked
 
     private void jLabelLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseClicked
+                
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(false);
         lg.setVisible(true);
+        
+        if(lg.isVisible() && evt.getClickCount()==1){
+            lg.setVisible(false);
+        }
     }//GEN-LAST:event_jLabelLoginMouseClicked
-
+    
     private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
+                
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(false);
         lg.setVisible(true);
+        
+        if(lg.isVisible() && evt.getClickCount()==1){
+            lg.setVisible(false);
+        }
     }//GEN-LAST:event_LoginMouseClicked
+
+    private void jLabelLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseEntered
+        Login.setBackground(new java.awt.Color(244, 244, 244));
+        jLabelLogin.setForeground(Color.BLACK);
+        setCursor(Cursor.HAND_CURSOR);
+    }//GEN-LAST:event_jLabelLoginMouseEntered
+
+    private void jLabelLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseExited
+        Login.setBackground(new java.awt.Color(0, 106, 193));
+        jLabelLogin.setForeground(Color.WHITE);
+        setCursor(Cursor.DEFAULT_CURSOR);
+    }//GEN-LAST:event_jLabelLoginMouseExited
 
     /**
      * @param args the command line arguments
