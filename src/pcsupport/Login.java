@@ -5,6 +5,8 @@
  */
 package pcsupport;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author hp
@@ -14,10 +16,14 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    String ruta = "/imagenes/";
+    ImageIcon imagen = new ImageIcon(ruta + "Help.png");
+
     public Login() {
         initComponents();
         this.setLocation(895, 155);
         getContentPane().setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());
     }
 
     /**

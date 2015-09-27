@@ -7,6 +7,7 @@ package interfaz;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import pcsupport.Login;
 
@@ -19,6 +20,8 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
+    String ruta = "/imagenes/";
+    ImageIcon imagen = new ImageIcon(ruta + "Help.png");
     Software sw = new Software();
     Hardware hw = new Hardware();
     Redes rd = new Redes();
@@ -32,7 +35,7 @@ public class Inicio extends javax.swing.JFrame {
         contentPane.add(sw);
         contentPane.add(hw);
         contentPane.add(rd);
-
+        setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());
         hw.setVisible(false);
         sw.setVisible(false);
         rd.setVisible(false);
