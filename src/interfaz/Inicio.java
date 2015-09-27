@@ -9,7 +9,7 @@ import java.awt.Container;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import pcsupport.Login;
+
 
 /**
  *
@@ -25,6 +25,7 @@ public class Inicio extends javax.swing.JFrame {
     Software sw = new Software();
     Hardware hw = new Hardware();
     Redes rd = new Redes();
+    Login lg = new Login();
 
     public Inicio() {
         initComponents();
@@ -35,14 +36,18 @@ public class Inicio extends javax.swing.JFrame {
         contentPane.add(sw);
         contentPane.add(hw);
         contentPane.add(rd);
+        contentPane.add(lg);
         setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());
         hw.setVisible(false);
         sw.setVisible(false);
         rd.setVisible(false);
+        lg.setVisible(false);
 
         hw.setBounds(375, 75, 650, 530);
         sw.setBounds(375, 75, 650, 530);
         rd.setBounds(375, 75, 650, 530);
+        lg.setBounds(690, 75, 330, 314);
+  
 
     }
 
@@ -246,6 +251,9 @@ public class Inicio extends javax.swing.JFrame {
         Login.setBackground(new java.awt.Color(0, 106, 193));
         Login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         Login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LoginMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 LoginMouseEntered(evt);
             }
@@ -393,12 +401,14 @@ public class Inicio extends javax.swing.JFrame {
         sw.setVisible(true);
         hw.setVisible(false);
         rd.setVisible(false);
+        lg.setVisible(false);
     }//GEN-LAST:event_SwMouseClicked
 
     private void HwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HwMouseClicked
         hw.setVisible(true);
         sw.setVisible(false);
         rd.setVisible(false);
+        lg.setVisible(false);
 
     }//GEN-LAST:event_HwMouseClicked
 
@@ -406,12 +416,22 @@ public class Inicio extends javax.swing.JFrame {
         rd.setVisible(true);
         hw.setVisible(false);
         sw.setVisible(false);
+        lg.setVisible(false);
     }//GEN-LAST:event_RdMouseClicked
 
     private void jLabelLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseClicked
-        Login lo = new Login();
-        lo.setVisible(true);
+        rd.setVisible(false);
+        hw.setVisible(false);
+        sw.setVisible(false);
+        lg.setVisible(true);
     }//GEN-LAST:event_jLabelLoginMouseClicked
+
+    private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
+        rd.setVisible(false);
+        hw.setVisible(false);
+        sw.setVisible(false);
+        lg.setVisible(true);
+    }//GEN-LAST:event_LoginMouseClicked
 
     /**
      * @param args the command line arguments
