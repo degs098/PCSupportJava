@@ -26,14 +26,28 @@ public class conexion {
         this.Con = Con;
 
     }
+    
+    static {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
+        } catch (ClassNotFoundException e1) {
+            System.out.println("ClassNotFoundException: " + e1.getMessage());
+        } catch (InstantiationException e2) {
+            System.out.println("InstantiationException: " + e2.getMessage());
+        } catch (IllegalAccessException e3) {
+            System.out.println("IllegalAccessException: " + e3.getMessage());
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
+    }// fin static
 
     public conexion() {   // constructor  
     }
 
-    public void cerrarBd() throws SQLException //metodo para cerrar la base de datos
+    /*public void cerrarBd() throws SQLException //metodo para cerrar la base de datos
     {
         this.Con.close();//cierra la base de datos
-    }
+    }*/
 
     static {
         try {
@@ -81,7 +95,7 @@ public class conexion {
         conexion Connection = new conexion();
 
         try {
-            ResultSet r = Connection.getCon().prepareStatement(SQLHelper.getUsuarios()).executeQuery();
+            ResultSet r = Connection.getCon().prepareStatement(SQLHelper.getValidarIngreso("zamueland", "123")).executeQuery();
             if (r.next()) {
                 System.out.println("\nNombre de Usuario: " + r.getString(1) + "\n" + "Contraseña: " + r.getString(3) + "\n" + "Estado: " + r.getString(4));
                 while (r.next()) {
@@ -93,10 +107,10 @@ public class conexion {
         } catch (Exception e) {
             System.out.println("Excepcion " + e.getMessage());
         } finally {
-            try {
-                Connection.cerrarBd();
-            } catch (SQLException ex) {
-            }
+            //try {
+                //Connection.cerrarBd();
+           // } catch (SQLException ex) {
+            //}
         }
 
     }

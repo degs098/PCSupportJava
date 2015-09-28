@@ -4,10 +4,15 @@
  */
 package interfaz;
 
+import entidades.Usuario;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.event.ActionEvent;
 import javax.swing.BorderFactory;
-
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import negocios.UsuarioN;
+import static persistencia.SQLHelper.getValidarIngreso;
 
 /**
  *
@@ -34,9 +39,9 @@ public class Login extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtClave = new javax.swing.JTextField();
         Aceptar = new javax.swing.JPanel();
         jLabelAceptar = new javax.swing.JLabel();
         Cancelar = new javax.swing.JPanel();
@@ -55,9 +60,9 @@ public class Login extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Usuario:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
 
@@ -80,6 +85,11 @@ public class Login extends javax.swing.JPanel {
         jLabelAceptar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabelAceptar.setForeground(new java.awt.Color(255, 255, 255));
         jLabelAceptar.setText("Aceptar");
+        jLabelAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelAceptarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout AceptarLayout = new javax.swing.GroupLayout(Aceptar);
         Aceptar.setLayout(AceptarLayout);
@@ -150,9 +160,9 @@ public class Login extends javax.swing.JPanel {
                         .addGap(93, 93, 93)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1)
+                            .addComponent(txtUsuario)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -177,11 +187,11 @@ public class Login extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -190,34 +200,38 @@ public class Login extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void AceptarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AceptarMouseEntered
-                
-        Aceptar.setBackground(new java.awt.Color(244,244,244));
+
+        Aceptar.setBackground(new java.awt.Color(244, 244, 244));
         jLabelAceptar.setForeground(Color.black);
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         Aceptar.setBorder(BorderFactory.createLineBorder(Color.black));
+
+
     }//GEN-LAST:event_AceptarMouseEntered
 
     private void AceptarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AceptarMouseExited
-        Aceptar.setBackground(new java.awt.Color(0,106,193));
+        Aceptar.setBackground(new java.awt.Color(0, 106, 193));
         jLabelAceptar.setForeground(Color.white);
         setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         Aceptar.setBorder(BorderFactory.createLineBorder(Color.white));
+
+        
     }//GEN-LAST:event_AceptarMouseExited
 
     private void CancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseEntered
-        Cancelar.setBackground(new java.awt.Color(244,244,244));
+        Cancelar.setBackground(new java.awt.Color(244, 244, 244));
         jLabelCancelar.setForeground(Color.black);
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         Cancelar.setBorder(BorderFactory.createLineBorder(Color.black));
     }//GEN-LAST:event_CancelarMouseEntered
 
     private void CancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseExited
-        Cancelar.setBackground(new java.awt.Color(0,106,193));
+        Cancelar.setBackground(new java.awt.Color(0, 106, 193));
         jLabelCancelar.setForeground(Color.white);
         setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         Cancelar.setBorder(BorderFactory.createLineBorder(Color.white));
@@ -226,6 +240,32 @@ public class Login extends javax.swing.JPanel {
     private void CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseClicked
         super.setVisible(false);
     }//GEN-LAST:event_CancelarMouseClicked
+
+    private void jLabelAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAceptarMouseClicked
+        // TODO add your handling code here:
+        String user = txtUsuario.getText();
+        String pwd = txtClave.getText();
+        UsuarioN un = new UsuarioN();
+        Usuario u = new Usuario();
+
+        u = un.validarIngreso(user, pwd);
+        if (user.length() == 0 || pwd.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Clave y/o usuario vacios", "Error", 0);
+        } else {
+
+            if (u.getUsuario() != "0") {
+
+                PostLogin MiMenu = new PostLogin();
+                MiMenu.dispose();
+
+                MiMenu.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                MiMenu.setVisible(true);
+            } else {
+                this.setVisible(true);
+
+            }
+        }
+    }//GEN-LAST:event_jLabelAceptarMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Aceptar;
@@ -237,8 +277,8 @@ public class Login extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelAceptar;
     private javax.swing.JLabel jLabelCancelar;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtClave;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
-    
+     
 }

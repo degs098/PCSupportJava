@@ -396,7 +396,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirMouseExited
 
     private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
-        int confirmar = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea cerrar la aplicación?", "Salir", JOptionPane.YES_NO_OPTION);
+        int confirmar = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea cerrar la aplicación?", "Salir", JOptionPane.YES_NO_OPTION,0);
 
         if (JOptionPane.YES_OPTION == confirmar) {
             System.exit(0);
