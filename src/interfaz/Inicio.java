@@ -46,7 +46,7 @@ public class Inicio extends javax.swing.JFrame {
         
         hw.setBounds(417, 75, 650, 590);
         sw.setBounds(375, 75, 650, 530);
-        rd.setBounds(375, 75, 650, 530);
+        rd.setBounds(417, 75, 650, 590);
         lg.setBounds(690, 75, 350, 314);                
 
     }
