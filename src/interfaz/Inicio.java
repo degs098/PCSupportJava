@@ -39,7 +39,7 @@ public class Inicio extends javax.swing.JFrame {
         contentPane.add(hw);
         contentPane.add(rd);
         contentPane.add(lg);
-        contentPane.add(B);
+        contentPane.add(B);       
         setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());
         B.setVisible(true);
         hw.setVisible(false);
@@ -52,9 +52,6 @@ public class Inicio extends javax.swing.JFrame {
         sw.setBounds(415, 75, 650, 530);
         rd.setBounds(415, 75, 650, 530);
         lg.setBounds(725, 75, 350, 314);
-        
-  
-
     }
 
     /**
