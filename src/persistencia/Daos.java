@@ -15,11 +15,11 @@ import java.sql.ResultSet;
  * @author perne
  */
 public class Daos {
-    
+
     public Daos() {
         Daos Dao;
     }
-    
+
     public Usuario getValidarIngreso(Connection con, String user, String pwd) {
         Usuario u = new Usuario();
         u.setUsuario("0");
@@ -29,11 +29,11 @@ public class Daos {
                     SQLHelper.getValidarIngreso(user, pwd));
             ResultSet r = p.executeQuery();
             while (r.next()) {
-                 u.setUsuario(r.getString(1));
+                u.setUsuario(r.getString(1));
                 u.setNombre(r.getString(2));
-                u.setClave(r.getString(3));                
+                u.setClave(r.getString(3));
                 u.setEstado(r.getString(4));
-                
+
             }// fin while
         } catch (Exception er) {
             System.out.println("er :" + er.getMessage());
@@ -48,5 +48,4 @@ public class Daos {
         }
         return u;
     }
-    
 }
