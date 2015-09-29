@@ -277,7 +277,7 @@ public class Hardware extends javax.swing.JPanel {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                if (rs.getRow() == jListCasos.getSelectedIndex()) {
+                if (rs.getRow() == jListCasos.getSelectedIndex() + 1) {
                     jTextAreaSoluciones.setText("SOLUCIONES: \n" + rs.getString(3));
                 }
             }
