@@ -216,6 +216,7 @@ public class Login extends javax.swing.JPanel {
         jLabelCancelar.setForeground(Color.black);
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         Cancelar.setBorder(BorderFactory.createLineBorder(Color.black));
+        
     }//GEN-LAST:event_CancelarMouseEntered
 
     private void CancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseExited
@@ -227,6 +228,8 @@ public class Login extends javax.swing.JPanel {
 
     private void CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseClicked
         super.setVisible(false);
+        txtUsuario.setText("");
+        txtClave.setText("");
     }//GEN-LAST:event_CancelarMouseClicked
 
     private void AceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AceptarMouseClicked
