@@ -26,6 +26,7 @@ public class Inicio extends javax.swing.JFrame {
     Hardware hw = new Hardware();
     Redes rd = new Redes();
     Login lg = new Login();
+    Bienvenida B = new Bienvenida();
 
     public Inicio() {
         initComponents();
@@ -38,16 +39,20 @@ public class Inicio extends javax.swing.JFrame {
         contentPane.add(hw);
         contentPane.add(rd);
         contentPane.add(lg);
+        contentPane.add(B);
         setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());
+        B.setVisible(true);
         hw.setVisible(false);
         sw.setVisible(false);
         rd.setVisible(false);
         lg.setVisible(false);
 
-        hw.setBounds(375, 75, 650, 530);
-        sw.setBounds(375, 75, 650, 530);
-        rd.setBounds(375, 75, 650, 530);
-        lg.setBounds(690, 75, 350, 314);
+        B.setBounds(415, 75, 650, 530);
+        hw.setBounds(415, 75, 650, 530);
+        sw.setBounds(415, 75, 650, 530);
+        rd.setBounds(415, 75, 650, 530);
+        lg.setBounds(725, 75, 350, 314);
+        
   
 
     }
@@ -62,7 +67,7 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        PC_Support = new javax.swing.JLabel();
         Hw = new javax.swing.JPanel();
         jLabelHardware = new javax.swing.JLabel();
         Sw = new javax.swing.JPanel();
@@ -84,9 +89,14 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(233, 233, 233));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 106, 193));
-        jLabel1.setText("PC Support");
+        PC_Support.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        PC_Support.setForeground(new java.awt.Color(0, 106, 193));
+        PC_Support.setText("PC Support");
+        PC_Support.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PC_SupportMouseClicked(evt);
+            }
+        });
 
         Hw.setName("Hw"); // NOI18N
         Hw.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -221,6 +231,11 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logo.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("©2015 Politécnico Colombiano Jaime Isaza Cadavid");
@@ -239,7 +254,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
+                        .addComponent(PC_Support))
                     .addComponent(jLabel3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -249,7 +264,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(PC_Support))
                 .addGap(55, 55, 55)
                 .addComponent(Hw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -258,7 +273,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(Rd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addContainerGap())
         );
@@ -340,7 +355,7 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 591, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -420,21 +435,23 @@ public class Inicio extends javax.swing.JFrame {
 
 
     private void SwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SwMouseClicked
-        sw.setVisible(true);
-        hw.setVisible(false);
+        B.setVisible(false);
         rd.setVisible(false);
+        hw.setVisible(false);
+        sw.setVisible(true);
         lg.setVisible(false);
     }//GEN-LAST:event_SwMouseClicked
 
     private void HwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HwMouseClicked
+        B.setVisible(false);
+        rd.setVisible(false);
         hw.setVisible(true);
         sw.setVisible(false);
-        rd.setVisible(false);
         lg.setVisible(false);
-
     }//GEN-LAST:event_HwMouseClicked
 
     private void RdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RdMouseClicked
+        B.setVisible(false);
         rd.setVisible(true);
         hw.setVisible(false);
         sw.setVisible(false);
@@ -442,19 +459,21 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_RdMouseClicked
 
     private void jLabelLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseClicked
-                
+        B.setVisible(false);
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(false);
-        lg.setVisible(true);       
+        lg.setVisible(true);
+              
     }//GEN-LAST:event_jLabelLoginMouseClicked
     
     private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
-                
+        B.setVisible(false);
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(false);
-        lg.setVisible(true);        
+        lg.setVisible(true);
+               
     }//GEN-LAST:event_LoginMouseClicked
 
     private void jLabelLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseEntered
@@ -468,6 +487,23 @@ public class Inicio extends javax.swing.JFrame {
         jLabelLogin.setForeground(Color.WHITE);
         setCursor(Cursor.DEFAULT_CURSOR);
     }//GEN-LAST:event_jLabelLoginMouseExited
+
+    private void PC_SupportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC_SupportMouseClicked
+        B.setVisible(true);
+        rd.setVisible(false);
+        hw.setVisible(false);
+        sw.setVisible(false);
+        lg.setVisible(false);
+        
+    }//GEN-LAST:event_PC_SupportMouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        B.setVisible(true);
+        rd.setVisible(false);
+        hw.setVisible(false);
+        sw.setVisible(false);
+        lg.setVisible(false);
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -511,10 +547,10 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Hw;
     private javax.swing.JPanel Login;
+    private javax.swing.JLabel PC_Support;
     private javax.swing.JPanel Rd;
     private javax.swing.JPanel Salir;
     private javax.swing.JPanel Sw;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelHardware;
