@@ -25,6 +25,7 @@ public class Inicio extends javax.swing.JFrame {
     Software sw = new Software();
     Hardware hw = new Hardware();
     Redes rd = new Redes();
+    SistemaOperativo so = new SistemaOperativo();
     Login lg = new Login();
     Bienvenida B = new Bienvenida();
 
@@ -38,6 +39,7 @@ public class Inicio extends javax.swing.JFrame {
         contentPane.add(sw);
         contentPane.add(hw);
         contentPane.add(rd);
+         contentPane.add(so);
         contentPane.add(lg);
         contentPane.add(B);       
         setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());
@@ -45,11 +47,13 @@ public class Inicio extends javax.swing.JFrame {
         hw.setVisible(false);
         sw.setVisible(false);
         rd.setVisible(false);
+        so.setVisible(false);
         lg.setVisible(false);
         
         hw.setBounds(417, 75, 650, 590);
         sw.setBounds(417, 75, 650, 530);
         rd.setBounds(417, 75, 650, 590);
+        so.setBounds(417, 75, 650, 590);
         lg.setBounds(690, 75, 350, 314);                
 
 
@@ -57,6 +61,7 @@ public class Inicio extends javax.swing.JFrame {
         hw.setBounds(415, 75, 650, 530);
         sw.setBounds(415, 75, 650, 530);
         rd.setBounds(415, 75, 650, 530);
+        so.setBounds(415, 75, 650, 530);
         lg.setBounds(725, 75, 350, 314);
     }
 
@@ -81,6 +86,8 @@ public class Inicio extends javax.swing.JFrame {
         jLabelSalir = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        So = new javax.swing.JPanel();
+        jLabelSistemaOperativo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Login = new javax.swing.JPanel();
         jLabelLogin = new javax.swing.JLabel();
@@ -190,7 +197,7 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(RdLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabelRedes)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(282, Short.MAX_VALUE))
         );
         RdLayout.setVerticalGroup(
             RdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,6 +250,39 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("©2015 Politécnico Colombiano Jaime Isaza Cadavid");
 
+        So.setName("Hw"); // NOI18N
+        So.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                SoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                SoMouseExited(evt);
+            }
+        });
+
+        jLabelSistemaOperativo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabelSistemaOperativo.setText("Sistema Operativo");
+
+        javax.swing.GroupLayout SoLayout = new javax.swing.GroupLayout(So);
+        So.setLayout(SoLayout);
+        SoLayout.setHorizontalGroup(
+            SoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SoLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jLabelSistemaOperativo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        SoLayout.setVerticalGroup(
+            SoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelSistemaOperativo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -250,7 +290,7 @@ public class Inicio extends javax.swing.JFrame {
             .addComponent(Hw, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Sw, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Rd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(So, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +299,8 @@ public class Inicio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PC_Support))
                     .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addComponent(Salir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,8 +316,10 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(Rd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(So, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addContainerGap())
         );
@@ -442,6 +485,7 @@ public class Inicio extends javax.swing.JFrame {
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(true);
+        so.setVisible(false);
         lg.setVisible(false);
     }//GEN-LAST:event_SwMouseClicked
 
@@ -450,6 +494,7 @@ public class Inicio extends javax.swing.JFrame {
         rd.setVisible(false);
         hw.setVisible(true);
         sw.setVisible(false);
+        so.setVisible(false);
         lg.setVisible(false);
     }//GEN-LAST:event_HwMouseClicked
 
@@ -458,6 +503,7 @@ public class Inicio extends javax.swing.JFrame {
         rd.setVisible(true);
         hw.setVisible(false);
         sw.setVisible(false);
+        so.setVisible(false);
         lg.setVisible(false);
     }//GEN-LAST:event_RdMouseClicked
 
@@ -466,6 +512,7 @@ public class Inicio extends javax.swing.JFrame {
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(false);
+        so.setVisible(false);
         lg.setVisible(true);
               
     }//GEN-LAST:event_jLabelLoginMouseClicked
@@ -475,6 +522,7 @@ public class Inicio extends javax.swing.JFrame {
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(false);
+        so.setVisible(false);
         lg.setVisible(true);
                
     }//GEN-LAST:event_LoginMouseClicked
@@ -496,6 +544,7 @@ public class Inicio extends javax.swing.JFrame {
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(false);
+        so.setVisible(false);
         lg.setVisible(false);
         
     }//GEN-LAST:event_PC_SupportMouseClicked
@@ -505,8 +554,30 @@ public class Inicio extends javax.swing.JFrame {
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(false);
+        so.setVisible(false);
         lg.setVisible(false);
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void SoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoMouseClicked
+        B.setVisible(false);
+        rd.setVisible(false);
+        hw.setVisible(false);
+        sw.setVisible(false);
+        so.setVisible(true);
+        lg.setVisible(false);
+    }//GEN-LAST:event_SoMouseClicked
+
+    private void SoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoMouseEntered
+        So.setBackground(new java.awt.Color(0, 106, 193));
+        jLabelSistemaOperativo.setForeground(new java.awt.Color(255, 255, 255));
+        setCursor(Cursor.HAND_CURSOR);
+    }//GEN-LAST:event_SoMouseEntered
+
+    private void SoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoMouseExited
+        So.setBackground(new java.awt.Color(240, 240, 240));
+        jLabelSistemaOperativo.setForeground(new java.awt.Color(0, 0, 0));
+        setCursor(Cursor.DEFAULT_CURSOR);
+    }//GEN-LAST:event_SoMouseExited
 
     /**
      * @param args the command line arguments
@@ -553,6 +624,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel PC_Support;
     private javax.swing.JPanel Rd;
     private javax.swing.JPanel Salir;
+    private javax.swing.JPanel So;
     private javax.swing.JPanel Sw;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -560,6 +632,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLogin;
     private javax.swing.JLabel jLabelRedes;
     private javax.swing.JLabel jLabelSalir;
+    private javax.swing.JLabel jLabelSistemaOperativo;
     private javax.swing.JLabel jLabelSoftware;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
