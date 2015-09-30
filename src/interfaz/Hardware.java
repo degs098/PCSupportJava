@@ -5,12 +5,14 @@
 package interfaz;
 
 import BaseDatos.conexion;
+import entidades.Solicitudes;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import persistencia.SQLHelperHardware;
 
 /**
@@ -70,6 +72,9 @@ public class Hardware extends javax.swing.JPanel {
         Publicar.setBackground(new java.awt.Color(0, 106, 193));
         Publicar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         Publicar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PublicarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 PublicarMouseEntered(evt);
             }
@@ -82,6 +87,9 @@ public class Hardware extends javax.swing.JPanel {
         jLabelPublicar.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPublicar.setText("Publicar");
         jLabelPublicar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelPublicarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabelPublicarMouseEntered(evt);
             }
@@ -267,22 +275,24 @@ public class Hardware extends javax.swing.JPanel {
     }//GEN-LAST:event_SolucionesMouseExited
 
     private void SolucionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SolucionesMouseClicked
-        
-        try {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLCASOS_HW");
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                if (rs.getRow() == jListCasos.getSelectedIndex() + 1) {
-                    jTextAreaSoluciones.setText("SOLUCIONES: \n" + rs.getString(3));
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        MostrarSoluciones();
     }//GEN-LAST:event_SolucionesMouseClicked
 
     private void jLabelSolucionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSolucionesMouseClicked
+        MostrarSoluciones();
+    }//GEN-LAST:event_jLabelSolucionesMouseClicked
+
+    private void PublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PublicarMouseClicked
+        String solicitud = jTextAreaCaso.getText();        
+        InsertarPublicacion(solicitud);
+    }//GEN-LAST:event_PublicarMouseClicked
+          
+    private void jLabelPublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPublicarMouseClicked
+        String solicitud = jTextAreaCaso.getText();        
+        InsertarPublicacion(solicitud);
+    }//GEN-LAST:event_jLabelPublicarMouseClicked
+    
+    public void MostrarSoluciones(){
         try {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLCASOS_HW");
             ResultSet rs = ps.executeQuery();
@@ -295,8 +305,31 @@ public class Hardware extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jLabelSolucionesMouseClicked
-
+    }
+    
+    public void InsertarPublicacion(String solicitud){                
+        
+        try{
+            PreparedStatement ps = con.prepareStatement("INSERT INTO TBLSOLICITUD_CASOS VALUES (incremental_soli.nextval, ?,?)");
+            
+            ps.setString(1, solicitud);
+            ps.setString(2, "Hardware");
+            ps.execute();
+            
+            JOptionPane.showMessageDialog(null, "¡Tu solicitud ha sido enviada exitosamente al personal de soporte!","Solicitud enviada", JOptionPane.INFORMATION_MESSAGE);
+            con.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solicitud, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+                con.close();
+            }catch(Exception es){
+                
+            }
+        }
+    }
+    
     public void llenarLista() {
         try {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLCASOS_HW");
@@ -310,6 +343,7 @@ public class Hardware extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Publicar;
     private javax.swing.JPanel Soluciones;

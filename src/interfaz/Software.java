@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import persistencia.SQLHelperSoftware;
 
 public class Software extends javax.swing.JPanel {
@@ -20,6 +21,7 @@ public class Software extends javax.swing.JPanel {
      */
     private DefaultListModel modeloLista = new DefaultListModel();
     Connection con = new conexion().getCon();
+    
     public Software() {
         initComponents();
         jTCaso.setLineWrap(true);     //Para que haga un salto de linea en cualquier parte de la palabra
@@ -93,11 +95,25 @@ public class Software extends javax.swing.JPanel {
 
         Publicar.setBackground(new java.awt.Color(0, 106, 193));
         Publicar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        Publicar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PublicarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PublicarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PublicarMouseExited(evt);
+            }
+        });
 
         jLabelPublicar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelPublicar.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPublicar.setText("Publicar");
         jLabelPublicar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelPublicarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabelPublicarMouseEntered(evt);
             }
@@ -185,7 +201,7 @@ public class Software extends javax.swing.JPanel {
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Soluciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,24 +217,13 @@ public class Software extends javax.swing.JPanel {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Soluciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelSolucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSolucionMouseClicked
-        try {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLCASOS_SW");
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                if (rs.getRow() == jListCasos.getSelectedIndex() + 1) {
-                    jTSoluciones.setText("SOLUCIONES: \n" + rs.getString(3));
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        MostrarSoluciones();
     }//GEN-LAST:event_jLabelSolucionMouseClicked
 
     private void SolucionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SolucionesMouseEntered
@@ -234,19 +239,7 @@ public class Software extends javax.swing.JPanel {
     }//GEN-LAST:event_SolucionesMouseExited
 
     private void SolucionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SolucionesMouseClicked
-        
-        try {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLCASOS_SW");
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                if (rs.getRow() == jListCasos.getSelectedIndex() + 1) {
-                    jTSoluciones.setText("SOLUCIONES: \n" + rs.getString(3));
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        MostrarSoluciones();        
     }//GEN-LAST:event_SolucionesMouseClicked
 
     private void jLabelSolucionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSolucionMouseEntered
@@ -272,6 +265,28 @@ public class Software extends javax.swing.JPanel {
         jLabelPublicar.setForeground(Color.WHITE);
         setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_jLabelPublicarMouseExited
+
+    private void PublicarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PublicarMouseEntered
+        Publicar.setBackground(new java.awt.Color(244, 244, 244));
+        jLabelPublicar.setForeground(Color.BLACK);
+        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_PublicarMouseEntered
+
+    private void PublicarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PublicarMouseExited
+        Publicar.setBackground(new java.awt.Color(0, 106, 193));
+        jLabelPublicar.setForeground(Color.WHITE);
+        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_PublicarMouseExited
+
+    private void PublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PublicarMouseClicked
+        String solicitud = jTCaso.getText();
+        InsertarPublicacion(solicitud);        
+    }//GEN-LAST:event_PublicarMouseClicked
+
+    private void jLabelPublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPublicarMouseClicked
+        String solicitud = jTCaso.getText();
+        InsertarPublicacion(solicitud);    
+    }//GEN-LAST:event_jLabelPublicarMouseClicked
     public void llenarLista() {
         try {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLCASOS_SW");
@@ -285,6 +300,45 @@ public class Software extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
+    
+    public void MostrarSoluciones(){
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLCASOS_SW");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getRow() == jListCasos.getSelectedIndex() + 1) {
+                    jTSoluciones.setText("SOLUCIONES: \n" + rs.getString(3));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void InsertarPublicacion(String solicitud){                
+        
+        try{
+            PreparedStatement ps = con.prepareStatement("INSERT INTO TBLSOLICITUD_CASOS VALUES (incremental_soli.nextval, ?,?)");
+            
+            ps.setString(1, solicitud);
+            ps.setString(2, "Software");
+            ps.execute();
+            
+            JOptionPane.showMessageDialog(null, "¡Tu solicitud ha sido enviada exitosamente al personal de soporte!","Solicitud enviada", JOptionPane.INFORMATION_MESSAGE);
+            con.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solicitud, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+                con.close();
+            }catch(Exception es){
+                
+            }
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Publicar;
     private javax.swing.JPanel Soluciones;
