@@ -4,6 +4,8 @@
  */
 package interfaz;
 
+import javax.swing.border.Border;
+
 
 
 
@@ -70,6 +72,14 @@ public class Bienvenida extends javax.swing.JPanel {
         jLabel3.setText("            problemas mas concurrentes a nivel de:");
 
         panelHardware.setBackground(new java.awt.Color(255, 255, 255));
+        panelHardware.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelHardwareMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelHardwareMouseExited(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 106, 193));
@@ -255,6 +265,15 @@ public class Bienvenida extends javax.swing.JPanel {
                 .addContainerGap(58, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void panelHardwareMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHardwareMouseEntered
+                
+    }//GEN-LAST:event_panelHardwareMouseEntered
+
+    private void panelHardwareMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHardwareMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelHardwareMouseExited
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JBienvenida;
     private javax.swing.JLabel jLabel1;
