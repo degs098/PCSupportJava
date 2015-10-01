@@ -21,7 +21,7 @@ import static persistencia.SQLHelper.getValidarIngreso;
 public class Login extends javax.swing.JPanel {
 
     /**
-     * Creates new form Software
+     * Creates new form Software,
      */
     public Login() {
         initComponents();
@@ -250,7 +250,7 @@ public class Login extends javax.swing.JPanel {
                 PostLogin MiMenu = new PostLogin();
                 MiMenu.dispose();
 
-                MiMenu.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                MiMenu.setExtendedState(WHEN_FOCUSED);
                 MiMenu.setVisible(true);
             } else {
                 this.setVisible(true);

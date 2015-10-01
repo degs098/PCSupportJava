@@ -28,7 +28,8 @@ public class Inicio extends javax.swing.JFrame {
     SistemaOperativo so = new SistemaOperativo();
     Login lg = new Login();
     Bienvenida B = new Bienvenida();
-
+    
+    
     public Inicio() {
         initComponents();
         super.setLocationRelativeTo(null);        
@@ -41,7 +42,9 @@ public class Inicio extends javax.swing.JFrame {
         contentPane.add(rd);
         contentPane.add(so);
         contentPane.add(lg);
-        contentPane.add(B);       
+        contentPane.add(B);
+        
+        
         setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());
         B.setVisible(true);
         hw.setVisible(false);
@@ -50,11 +53,13 @@ public class Inicio extends javax.swing.JFrame {
         so.setVisible(false);
         lg.setVisible(false);
         
+        
         hw.setBounds(417, 75, 650, 590);
         sw.setBounds(417, 75, 650, 530);
         rd.setBounds(417, 75, 650, 590);
         so.setBounds(417, 75, 650, 590);
-        lg.setBounds(690, 75, 350, 314);                
+        lg.setBounds(690, 75, 350, 314);
+        
 
 
         B.setBounds(415, 75, 650, 530);
@@ -468,8 +473,7 @@ public class Inicio extends javax.swing.JFrame {
         Login.setBackground(new java.awt.Color(244, 244, 244));
         jLabelLogin.setForeground(Color.BLACK);
         setCursor(Cursor.HAND_CURSOR);
-
-
+                
     }//GEN-LAST:event_LoginMouseEntered
 
 

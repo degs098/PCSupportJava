@@ -60,6 +60,7 @@ public class Hardware extends javax.swing.JPanel {
         jTextAreaSoluciones = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(0, 106, 193));
+        setRequestFocusEnabled(false);
 
         jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 25)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,7 +110,7 @@ public class Hardware extends javax.swing.JPanel {
         );
         PublicarLayout.setVerticalGroup(
             PublicarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelPublicar, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+            .addComponent(jLabelPublicar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
         jListCasos.setModel(new javax.swing.AbstractListModel() {
@@ -202,8 +203,8 @@ public class Hardware extends javax.swing.JPanel {
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Publicar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Soluciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(Soluciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Publicar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
