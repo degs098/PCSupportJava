@@ -21,7 +21,7 @@ import static persistencia.SQLHelper.getValidarIngreso;
 public class Login extends javax.swing.JPanel {
 
     /**
-     * Creates new form Software
+     * Creates new form Software,
      */
     public Login() {
         initComponents();
