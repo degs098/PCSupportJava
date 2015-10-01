@@ -5,6 +5,10 @@
  */
 package interfaz;
 
+import java.awt.Color;
+import java.awt.Container;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author perne
@@ -14,8 +18,19 @@ public class PostLogin extends javax.swing.JFrame {
     /**
      * Creates new form PostLogin
      */
+    String ruta = "/imagenes/";    
+    ImageIcon imagen = new ImageIcon(ruta + "Help.png");
+    Administracion adm = new Administracion();
     public PostLogin() {
         initComponents();
+        super.setLocationRelativeTo(null);        
+        super.setBackground(Color.white);
+
+        Container contentPane = getContentPane();
+        contentPane.setLayout(null);
+        contentPane.add(adm);
+        adm.setVisible(true);
+        adm.setBounds(0, 0, 650, 590);
     }
 
     /**
@@ -27,27 +42,21 @@ public class PostLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Probando conexion");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setName("PostLogin"); // NOI18N
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(650, 590));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(jLabel1)
-                .addContainerGap(158, Short.MAX_VALUE))
+            .addGap(0, 650, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(138, 138, 138))
+            .addGap(0, 589, Short.MAX_VALUE)
         );
 
         pack();
@@ -89,6 +98,5 @@ public class PostLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
