@@ -271,7 +271,7 @@ public class Inicio extends javax.swing.JFrame {
         SoLayout.setHorizontalGroup(
             SoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SoLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(64, 64, 64)
                 .addComponent(jLabelSistemaOperativo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
