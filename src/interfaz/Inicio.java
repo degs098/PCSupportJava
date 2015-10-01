@@ -39,7 +39,7 @@ public class Inicio extends javax.swing.JFrame {
         contentPane.add(sw);
         contentPane.add(hw);
         contentPane.add(rd);
-         contentPane.add(so);
+        contentPane.add(so);
         contentPane.add(lg);
         contentPane.add(B);       
         setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());

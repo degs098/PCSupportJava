@@ -67,7 +67,7 @@ public class conexion {
 
     public void ConexionDB() {
         String host = "localhost";
-        String puerto = "8084";
+        String puerto = "1521";
         String SID = "xe";
         String user = "PC_Support";
         String password = "123";
