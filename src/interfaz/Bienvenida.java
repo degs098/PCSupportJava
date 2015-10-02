@@ -4,25 +4,23 @@
  */
 package interfaz;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import javax.swing.BorderFactory;
 import javax.swing.border.Border;
-
-
-
 
 /**
  *
  * @author samsung
  */
 public class Bienvenida extends javax.swing.JPanel {
-    
-    
 
     /**
      * Creates new form Bienvenida
      */
     public Bienvenida() {
         initComponents();
-        
+
     }
 
     /**
@@ -111,6 +109,14 @@ public class Bienvenida extends javax.swing.JPanel {
         );
 
         panelSoftware.setBackground(new java.awt.Color(255, 255, 255));
+        panelSoftware.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelSoftwareMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelSoftwareMouseExited(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 106, 193));
@@ -142,6 +148,14 @@ public class Bienvenida extends javax.swing.JPanel {
         );
 
         panelRedes.setBackground(new java.awt.Color(255, 255, 255));
+        panelRedes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelRedesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelRedesMouseExited(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 106, 193));
@@ -173,6 +187,14 @@ public class Bienvenida extends javax.swing.JPanel {
         );
 
         panelSistemaOperativo.setBackground(new java.awt.Color(255, 255, 255));
+        panelSistemaOperativo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelSistemaOperativoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelSistemaOperativoMouseExited(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 106, 193));
@@ -267,13 +289,44 @@ public class Bienvenida extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void panelHardwareMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHardwareMouseEntered
-                
+        panelHardware.setBorder(BorderFactory.createLineBorder(Color.black));
+        panelHardware.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_panelHardwareMouseEntered
 
     private void panelHardwareMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHardwareMouseExited
-        // TODO add your handling code here:
+        panelHardware.setBorder(BorderFactory.createEmptyBorder());
+        panelHardware.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_panelHardwareMouseExited
 
+    private void panelSoftwareMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSoftwareMouseEntered
+        panelSoftware.setBorder(BorderFactory.createLineBorder(Color.black));
+        panelSoftware.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_panelSoftwareMouseEntered
+
+    private void panelSoftwareMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSoftwareMouseExited
+        panelSoftware.setBorder(BorderFactory.createEmptyBorder());
+        panelSoftware.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_panelSoftwareMouseExited
+
+    private void panelRedesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRedesMouseEntered
+        panelRedes.setBorder(BorderFactory.createLineBorder(Color.black));
+        panelRedes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_panelRedesMouseEntered
+
+    private void panelRedesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRedesMouseExited
+        panelRedes.setBorder(BorderFactory.createEmptyBorder());
+        panelRedes.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_panelRedesMouseExited
+
+    private void panelSistemaOperativoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSistemaOperativoMouseEntered
+        panelSistemaOperativo.setBorder(BorderFactory.createLineBorder(Color.black));
+        panelSistemaOperativo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_panelSistemaOperativoMouseEntered
+
+    private void panelSistemaOperativoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSistemaOperativoMouseExited
+        panelSistemaOperativo.setBorder(BorderFactory.createEmptyBorder());
+        panelSistemaOperativo.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_panelSistemaOperativoMouseExited
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JBienvenida;
     private javax.swing.JLabel jLabel1;
@@ -293,6 +346,4 @@ public class Bienvenida extends javax.swing.JPanel {
     private javax.swing.JPanel panelSistemaOperativo;
     private javax.swing.JPanel panelSoftware;
     // End of variables declaration//GEN-END:variables
-
-    
 }

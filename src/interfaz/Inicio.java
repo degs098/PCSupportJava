@@ -54,20 +54,21 @@ public class Inicio extends javax.swing.JFrame {
         lg.setVisible(false);
         
         
-        hw.setBounds(417, 75, 650, 590);
-        sw.setBounds(417, 75, 650, 530);
-        rd.setBounds(417, 75, 650, 590);
-        so.setBounds(417, 75, 650, 590);
+        hw.setBounds(419, 75, 650, 590);
+        sw.setBounds(419, 75, 650, 590);
+        rd.setBounds(419, 75, 650, 590);
+        so.setBounds(419, 75, 650, 590);
         lg.setBounds(690, 75, 350, 314);
         
 
-
+/*
         B.setBounds(415, 75, 650, 530);
         hw.setBounds(415, 75, 650, 530);
         sw.setBounds(415, 75, 650, 530);
         rd.setBounds(415, 75, 650, 530);
         so.setBounds(415, 75, 650, 530);
         lg.setBounds(725, 75, 350, 314);
+  */
     }
 
     /**
