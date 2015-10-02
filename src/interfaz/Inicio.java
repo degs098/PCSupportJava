@@ -58,6 +58,7 @@ public class Inicio extends javax.swing.JFrame {
         sw.setBounds(419, 75, 650, 590);
         rd.setBounds(419, 75, 650, 590);
         so.setBounds(419, 75, 650, 590);
+        B.setBounds(419, 75, 650, 590);
         lg.setBounds(690, 75, 350, 314);
         
 
@@ -529,6 +530,10 @@ public class Inicio extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(true);
+        
+        if(lg.isVisible()){
+            B.setVisible(true);
+        }
                
     }//GEN-LAST:event_LoginMouseClicked
 
