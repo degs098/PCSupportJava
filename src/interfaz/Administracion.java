@@ -481,7 +481,7 @@ public class Administracion extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanelSalirMouseClicked
 
     private void jPanelPublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelPublicarMouseClicked
-        InsertarEnTabla(jTextFieldIDCaso.getText(), jTextAreaRespuesta.getText(),(String) jComboBoxTipos.getSelectedItem());
+        InsertarEnTabla(jTextFieldIDCaso.getText(), jTextAreaRespuesta.getText(), (String) jComboBoxTipos.getSelectedItem());
     }//GEN-LAST:event_jPanelPublicarMouseClicked
 
     private void jPanelSalir1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSalir1MouseClicked
@@ -490,7 +490,7 @@ public class Administracion extends javax.swing.JPanel {
 
     private void jPanelCambiarTipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCambiarTipoMouseClicked
         jComboBoxTipos.enable();
-        
+
     }//GEN-LAST:event_jPanelCambiarTipoMouseClicked
 
     public void llenarLista() {
@@ -558,12 +558,17 @@ public class Administracion extends javax.swing.JPanel {
             } else if (tipo == "Sistema Operativo") {
                 PreparedStatement ps = con.prepareStatement("INSERT INTO TBLCASOS_SO (ID,CASO,SOLUCION) VALUES \n"
                         + "        (incremental_so.nextval,'" + caso + "', '" + solucion + "')");
+
                 ResultSet rs = ps.executeQuery();
-            }else{
-                System.out.println("Error");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solución, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
             }
+            JOptionPane.showMessageDialog(null, "¡Solución de solicitud guardada!", "Solución enviada", JOptionPane.INFORMATION_MESSAGE);
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solución, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
