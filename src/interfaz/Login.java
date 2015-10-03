@@ -6,6 +6,7 @@ package interfaz;
 
 import entidades.Usuario;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import javax.swing.BorderFactory;
@@ -23,6 +24,8 @@ public class Login extends javax.swing.JPanel {
     /**
      * Creates new form Software,
      */
+    Inicio in = new Inicio();
+    
     public Login() {
         initComponents();
     }
@@ -246,12 +249,12 @@ public class Login extends javax.swing.JPanel {
         } else {
 
             if (u.getUsuario() != "0") {
-
-                PostLogin MiMenu = new PostLogin();
-                MiMenu.dispose();
-
-                MiMenu.setExtendedState(WHEN_FOCUSED);
-                MiMenu.setVisible(true);
+                Container cp = new Container();
+                Administracion adm = new Administracion();
+                cp.add(adm);
+                in.add(cp);
+                
+                adm.setVisible(true);
             } else {
                 this.setVisible(true);
 

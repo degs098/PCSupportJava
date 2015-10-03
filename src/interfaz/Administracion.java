@@ -29,6 +29,7 @@ public class Administracion extends javax.swing.JPanel {
     public Administracion() {
         initComponents();
         llenarLista();
+        super.setBounds(419, 75, 650, 590);
     }
 
     /**
