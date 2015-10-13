@@ -10,7 +10,6 @@ import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author samsung
@@ -20,7 +19,7 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
-    String ruta = "/imagenes/";    
+    String ruta = "/imagenes/";
     ImageIcon imagen = new ImageIcon(ruta + "Help.png");
     Software sw = new Software();
     Hardware hw = new Hardware();
@@ -28,12 +27,13 @@ public class Inicio extends javax.swing.JFrame {
     SistemaOperativo so = new SistemaOperativo();
     Login lg = new Login();
     Bienvenida B = new Bienvenida();
-    
-    
+   
     public Inicio() {
         initComponents();
-        super.setLocationRelativeTo(null);        
+        super.setLocationRelativeTo(null);
         super.setBackground(Color.white);
+
+
 
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
@@ -43,8 +43,8 @@ public class Inicio extends javax.swing.JFrame {
         contentPane.add(so);
         contentPane.add(lg);
         contentPane.add(B);
-        
-        
+
+
         setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());
         B.setVisible(true);
         hw.setVisible(false);
@@ -52,24 +52,24 @@ public class Inicio extends javax.swing.JFrame {
         rd.setVisible(false);
         so.setVisible(false);
         lg.setVisible(false);
-        
-        
+
+
         hw.setBounds(419, 75, 650, 590);
         sw.setBounds(419, 75, 650, 590);
         rd.setBounds(419, 75, 650, 590);
         so.setBounds(419, 75, 650, 590);
         B.setBounds(419, 75, 650, 590);
         lg.setBounds(690, 75, 350, 314);
-        
 
-/*
-        B.setBounds(415, 75, 650, 530);
-        hw.setBounds(415, 75, 650, 530);
-        sw.setBounds(415, 75, 650, 530);
-        rd.setBounds(415, 75, 650, 530);
-        so.setBounds(415, 75, 650, 530);
-        lg.setBounds(725, 75, 350, 314);
-  */
+
+        /*
+         B.setBounds(415, 75, 650, 530);
+         hw.setBounds(415, 75, 650, 530);
+         sw.setBounds(415, 75, 650, 530);
+         rd.setBounds(415, 75, 650, 530);
+         so.setBounds(415, 75, 650, 530);
+         lg.setBounds(725, 75, 350, 314);
+         */
     }
 
     /**
@@ -442,7 +442,7 @@ public class Inicio extends javax.swing.JFrame {
     private void RdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RdMouseEntered
         Rd.setBackground(new java.awt.Color(0, 106, 193));
         jLabelRedes.setForeground(new java.awt.Color(255, 255, 255));
-        setCursor(Cursor.HAND_CURSOR);        
+        setCursor(Cursor.HAND_CURSOR);
     }//GEN-LAST:event_RdMouseEntered
 
     private void RdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RdMouseExited
@@ -464,7 +464,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirMouseExited
 
     private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
-        int confirmar = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea cerrar la aplicación?", "Salir", JOptionPane.YES_NO_OPTION,0);
+        int confirmar = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea cerrar la aplicación?", "Salir", JOptionPane.YES_NO_OPTION, 0);
 
         if (JOptionPane.YES_OPTION == confirmar) {
             System.exit(0);
@@ -475,16 +475,14 @@ public class Inicio extends javax.swing.JFrame {
         Login.setBackground(new java.awt.Color(244, 244, 244));
         jLabelLogin.setForeground(Color.BLACK);
         setCursor(Cursor.HAND_CURSOR);
-                
-    }//GEN-LAST:event_LoginMouseEntered
 
+    }//GEN-LAST:event_LoginMouseEntered
 
     private void LoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseExited
         Login.setBackground(new java.awt.Color(0, 106, 193));
         jLabelLogin.setForeground(Color.WHITE);
         setCursor(Cursor.DEFAULT_CURSOR);
     }//GEN-LAST:event_LoginMouseExited
-
 
     private void SwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SwMouseClicked
         B.setVisible(false);
@@ -520,9 +518,9 @@ public class Inicio extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(true);
-              
+
     }//GEN-LAST:event_jLabelLoginMouseClicked
-    
+
     private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
         B.setVisible(false);
         rd.setVisible(false);
@@ -530,11 +528,11 @@ public class Inicio extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(true);
-        
-        if(lg.isVisible()){
+
+        if (lg.isVisible()) {
             B.setVisible(true);
         }
-               
+
     }//GEN-LAST:event_LoginMouseClicked
 
     private void jLabelLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseEntered
@@ -556,7 +554,7 @@ public class Inicio extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(false);
-        
+
     }//GEN-LAST:event_PC_SupportMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked

@@ -25,6 +25,7 @@ public class Administracion extends javax.swing.JPanel {
      */
     private DefaultListModel modeloLista = new DefaultListModel();
     Connection con = new conexion().getCon();
+    int Seleccion = -1;
 
     public Administracion() {
         initComponents();
@@ -545,7 +546,7 @@ public class Administracion extends javax.swing.JPanel {
         try {
             if (tipo == "Hardware") {
                 PreparedStatement ps = con.prepareStatement("INSERT INTO TBLCASOS_HW (ID,CASO,SOLUCION) VALUES \n"
-                        + "        (incremental_so.nextval,'" + caso + "', '" + solucion + "')");
+                        + "        (incremental_so.nextval,'" + caso + "', '" + solucion + "')");                
                 ResultSet rs = ps.executeQuery();
             } else if (tipo == "Software") {
                 PreparedStatement ps = con.prepareStatement("INSERT INTO TBLCASOS_SW (ID,CASO,SOLUCION) VALUES \n"
@@ -564,6 +565,16 @@ public class Administracion extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solución, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
             }
+            
+            PreparedStatement pse = con.prepareStatement("DELETE FROM TBLSOLICITUD_CASOS WHERE CASO='"+caso+"'");
+            ResultSet rse = pse.executeQuery();
+            
+            Seleccion = jListSolicitudes.getSelectedIndex();
+            
+            if (Seleccion>=0){
+                modeloLista.removeElementAt(Seleccion);            
+            }
+            
             JOptionPane.showMessageDialog(null, "¡Solución de solicitud guardada!", "Solución enviada", JOptionPane.INFORMATION_MESSAGE);
             con.close();
         } catch (Exception e) {
