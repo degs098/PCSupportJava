@@ -575,8 +575,7 @@ public class Administracion extends javax.swing.JPanel {
                 modeloLista.removeElementAt(Seleccion);            
             }
             
-            JOptionPane.showMessageDialog(null, "¡Solución de solicitud guardada!", "Solución enviada", JOptionPane.INFORMATION_MESSAGE);
-            con.close();
+            JOptionPane.showMessageDialog(null, "¡Solución de solicitud guardada!", "Solución enviada", JOptionPane.INFORMATION_MESSAGE);            
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solución, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
