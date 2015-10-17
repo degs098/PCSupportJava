@@ -119,6 +119,17 @@ public class Ingresar extends javax.swing.JPanel {
         jLabelCancelar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabelCancelar.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCancelar.setText("Cancelar");
+        jLabelCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCancelarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelCancelarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelCancelarMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout CancelarLayout = new javax.swing.GroupLayout(Cancelar);
         Cancelar.setLayout(CancelarLayout);
@@ -193,7 +204,7 @@ public class Ingresar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -233,8 +244,8 @@ public class Ingresar extends javax.swing.JPanel {
 
     private void CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseClicked
         super.setVisible(false);
-        txtUsuario.setText("");
-        txtClave.setText("");
+        Bienvenida b = new Bienvenida();
+        b.setVisible(true);
     }//GEN-LAST:event_CancelarMouseClicked
 
     private void AceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AceptarMouseClicked
@@ -263,6 +274,22 @@ public class Ingresar extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_AceptarMouseClicked
+
+    private void jLabelCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCancelarMouseClicked
+        super.setVisible(false);
+        Bienvenida b = new Bienvenida();
+        b.setVisible(true);
+        txtUsuario.setText("");
+        txtClave.setText("");
+    }//GEN-LAST:event_jLabelCancelarMouseClicked
+
+    private void jLabelCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCancelarMouseEntered
+        CancelarMouseEntered(evt);
+    }//GEN-LAST:event_jLabelCancelarMouseEntered
+
+    private void jLabelCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCancelarMouseExited
+        CancelarMouseExited(evt);
+    }//GEN-LAST:event_jLabelCancelarMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Aceptar;

@@ -24,9 +24,8 @@ public class Inicio extends javax.swing.JFrame {
     Software sw = new Software();
     Hardware hw = new Hardware();
     Redes rd = new Redes();
-    SistemaOperativo so = new SistemaOperativo();
-    Login lg = new Login();
-    Ingresar ig = new Ingresar();
+    SistemaOperativo so = new SistemaOperativo();    
+    Ingresar lg = new Ingresar();
     Bienvenida B = new Bienvenida();
    
     public Inicio() {
@@ -42,8 +41,7 @@ public class Inicio extends javax.swing.JFrame {
         contentPane.add(hw);
         contentPane.add(rd);
         contentPane.add(so);
-        contentPane.add(lg);
-        contentPane.add(ig);
+        contentPane.add(lg);        
         contentPane.add(B);
 
 
@@ -54,7 +52,7 @@ public class Inicio extends javax.swing.JFrame {
         rd.setVisible(false);
         so.setVisible(false);
         lg.setVisible(false);
-        ig.setVisible(false);
+        
 
 
         hw.setBounds(419, 75, 650, 590);
@@ -62,8 +60,8 @@ public class Inicio extends javax.swing.JFrame {
         rd.setBounds(419, 75, 650, 590);
         so.setBounds(419, 75, 650, 590);
         B.setBounds(419, 75, 650, 590);
-        lg.setBounds(690, 75, 350, 314);
-        ig.setBounds(419, 75, 650, 590);
+        lg.setBounds(419, 75, 650, 590);
+        
         
 
 
@@ -100,8 +98,6 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         So = new javax.swing.JPanel();
         jLabelSistemaOperativo = new javax.swing.JLabel();
-        Ig = new javax.swing.JPanel();
-        jLabelIngresar = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Login = new javax.swing.JPanel();
         jLabelLogin = new javax.swing.JLabel();
@@ -297,39 +293,6 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Ig.setName("Hw"); // NOI18N
-        Ig.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                IgMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                IgMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                IgMouseExited(evt);
-            }
-        });
-
-        jLabelIngresar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabelIngresar.setText("Ingresar al Sistema");
-
-        javax.swing.GroupLayout IgLayout = new javax.swing.GroupLayout(Ig);
-        Ig.setLayout(IgLayout);
-        IgLayout.setHorizontalGroup(
-            IgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(IgLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jLabelIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        IgLayout.setVerticalGroup(
-            IgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IgLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelIngresar)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -348,7 +311,6 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(PC_Support))
                     .addComponent(jLabel3))
                 .addContainerGap(39, Short.MAX_VALUE))
-            .addComponent(Ig, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,11 +327,9 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(Rd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(So, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(Ig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addContainerGap())
         );
@@ -534,7 +494,7 @@ public class Inicio extends javax.swing.JFrame {
         sw.setVisible(true);
         so.setVisible(false);
         lg.setVisible(false);
-        ig.setVisible(false);
+        
     }//GEN-LAST:event_SwMouseClicked
 
     private void HwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HwMouseClicked
@@ -544,7 +504,7 @@ public class Inicio extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(false);
-        ig.setVisible(false);
+        
     }//GEN-LAST:event_HwMouseClicked
 
     private void RdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RdMouseClicked
@@ -554,7 +514,7 @@ public class Inicio extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(false);
-        ig.setVisible(false);
+        
     }//GEN-LAST:event_RdMouseClicked
 
     private void jLabelLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseClicked
@@ -564,7 +524,7 @@ public class Inicio extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(true);
-        ig.setVisible(false);
+        
 
     }//GEN-LAST:event_jLabelLoginMouseClicked
 
@@ -574,8 +534,7 @@ public class Inicio extends javax.swing.JFrame {
         hw.setVisible(false);
         sw.setVisible(false);
         so.setVisible(false);
-        lg.setVisible(true);
-        ig.setVisible(false);
+        lg.setVisible(true);        
 
         if (lg.isVisible()) {
             B.setVisible(true);
@@ -602,7 +561,7 @@ public class Inicio extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(false);
-        ig.setVisible(false);
+        
 
     }//GEN-LAST:event_PC_SupportMouseClicked
 
@@ -613,7 +572,7 @@ public class Inicio extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(false);
-        ig.setVisible(false);
+        
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void SoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoMouseClicked
@@ -623,7 +582,7 @@ public class Inicio extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(true);
         lg.setVisible(false);
-        ig.setVisible(false);
+       
     }//GEN-LAST:event_SoMouseClicked
 
     private void SoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoMouseEntered
@@ -637,28 +596,6 @@ public class Inicio extends javax.swing.JFrame {
         jLabelSistemaOperativo.setForeground(new java.awt.Color(0, 0, 0));
         setCursor(Cursor.DEFAULT_CURSOR);
     }//GEN-LAST:event_SoMouseExited
-
-    private void IgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IgMouseClicked
-        B.setVisible(false);
-        rd.setVisible(false);
-        hw.setVisible(false);
-        sw.setVisible(false);
-        so.setVisible(false);
-        lg.setVisible(false);
-        ig.setVisible(true);
-    }//GEN-LAST:event_IgMouseClicked
-
-    private void IgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IgMouseEntered
-        Ig.setBackground(new java.awt.Color(0, 106, 193));
-        jLabelIngresar.setForeground(new java.awt.Color(255, 255, 255));
-        setCursor(Cursor.HAND_CURSOR);
-    }//GEN-LAST:event_IgMouseEntered
-
-    private void IgMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IgMouseExited
-        Ig.setBackground(new java.awt.Color(240, 240, 240));
-        jLabelIngresar.setForeground(new java.awt.Color(0, 0, 0));
-        setCursor(Cursor.DEFAULT_CURSOR);
-    }//GEN-LAST:event_IgMouseExited
 
     /**
      * @param args the command line arguments
@@ -701,7 +638,6 @@ public class Inicio extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Hw;
-    private javax.swing.JPanel Ig;
     private javax.swing.JPanel Login;
     private javax.swing.JLabel PC_Support;
     private javax.swing.JPanel Rd;
@@ -711,7 +647,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelHardware;
-    private javax.swing.JLabel jLabelIngresar;
     private javax.swing.JLabel jLabelLogin;
     private javax.swing.JLabel jLabelRedes;
     private javax.swing.JLabel jLabelSalir;
