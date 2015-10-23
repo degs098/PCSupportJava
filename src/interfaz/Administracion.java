@@ -65,8 +65,8 @@ public class Administracion extends javax.swing.JPanel {
         jTextFieldIDCaso = new javax.swing.JTextField();
         jPanelSalir = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanelSalir1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        jPanelAtras = new javax.swing.JPanel();
+        jLabelAtras = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -100,10 +100,11 @@ public class Administracion extends javax.swing.JPanel {
         jLabelTitulo.setText("Administración de solicitudes");
 
         jListSolicitudes.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "No hay solicitudes." };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        jListSolicitudes.setToolTipText("");
         jScrollPane1.setViewportView(jListSolicitudes);
 
         jTextAreaRespuesta.setColumns(20);
@@ -270,6 +271,7 @@ public class Administracion extends javax.swing.JPanel {
         jLabel1.setText("ID");
 
         jTextFieldID.setEditable(false);
+        jTextFieldID.setText(" ");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -304,31 +306,31 @@ public class Administracion extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanelSalir1.setBackground(new java.awt.Color(0, 106, 193));
-        jPanelSalir1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
-        jPanelSalir1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanelAtras.setBackground(new java.awt.Color(0, 106, 193));
+        jPanelAtras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jPanelAtras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanelSalir1MouseClicked(evt);
+                jPanelAtrasMouseClicked(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Atras");
+        jLabelAtras.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelAtras.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelAtras.setText("Atras");
 
-        javax.swing.GroupLayout jPanelSalir1Layout = new javax.swing.GroupLayout(jPanelSalir1);
-        jPanelSalir1.setLayout(jPanelSalir1Layout);
-        jPanelSalir1Layout.setHorizontalGroup(
-            jPanelSalir1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSalir1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelAtrasLayout = new javax.swing.GroupLayout(jPanelAtras);
+        jPanelAtras.setLayout(jPanelAtrasLayout);
+        jPanelAtrasLayout.setHorizontalGroup(
+            jPanelAtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAtrasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelAtras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanelSalir1Layout.setVerticalGroup(
-            jPanelSalir1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSalir1Layout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanelAtrasLayout.setVerticalGroup(
+            jPanelAtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAtrasLayout.createSequentialGroup()
+                .addComponent(jLabelAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -337,13 +339,13 @@ public class Administracion extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(150, 150, 150)
                         .addComponent(jLabelTitulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanelSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanelSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -378,7 +380,7 @@ public class Administracion extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jLabelTitulo))
                     .addComponent(jPanelSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -466,11 +468,12 @@ public class Administracion extends javax.swing.JPanel {
 
     private void jPanelEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelEliminarMouseClicked
         // TODO add your handling code here:
+
         int confirmar = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar ese caso?", "Eliminar", JOptionPane.YES_NO_OPTION, 0);
 
         if (JOptionPane.YES_OPTION == confirmar) {
             EliminarCaso(Integer.parseInt(jTextFieldID.getText()));
-            llenarLista();
+
         }
 
 
@@ -485,9 +488,9 @@ public class Administracion extends javax.swing.JPanel {
         InsertarEnTabla(jTextFieldIDCaso.getText(), jTextAreaRespuesta.getText(), (String) jComboBoxTipos.getSelectedItem());
     }//GEN-LAST:event_jPanelPublicarMouseClicked
 
-    private void jPanelSalir1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSalir1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanelSalir1MouseClicked
+    private void jPanelAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelAtrasMouseClicked
+        // TODO add your handling code here:     
+    }//GEN-LAST:event_jPanelAtrasMouseClicked
 
     private void jPanelCambiarTipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCambiarTipoMouseClicked
         jComboBoxTipos.enable();
@@ -535,6 +538,13 @@ public class Administracion extends javax.swing.JPanel {
     public void EliminarCaso(int id_caso) {
         try {
             PreparedStatement ps = con.prepareStatement("DELETE FROM TBLSOLICITUD_CASOS WHERE ID=" + id_caso);
+            ResultSet rse = ps.executeQuery();
+
+            Seleccion = jListSolicitudes.getSelectedIndex();
+
+            if (Seleccion >= 0) {
+                modeloLista.removeElementAt(Seleccion);
+            }
 
         } catch (Exception e2) {
             e2.printStackTrace();
@@ -546,7 +556,7 @@ public class Administracion extends javax.swing.JPanel {
         try {
             if (tipo == "Hardware") {
                 PreparedStatement ps = con.prepareStatement("INSERT INTO TBLCASOS_HW (ID,CASO,SOLUCION) VALUES \n"
-                        + "        (incremental_so.nextval,'" + caso + "', '" + solucion + "')");                
+                        + "        (incremental_so.nextval,'" + caso + "', '" + solucion + "')");
                 ResultSet rs = ps.executeQuery();
             } else if (tipo == "Software") {
                 PreparedStatement ps = con.prepareStatement("INSERT INTO TBLCASOS_SW (ID,CASO,SOLUCION) VALUES \n"
@@ -565,17 +575,10 @@ public class Administracion extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solución, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            
-            PreparedStatement pse = con.prepareStatement("DELETE FROM TBLSOLICITUD_CASOS WHERE CASO='"+caso+"'");
-            ResultSet rse = pse.executeQuery();
-            
-            Seleccion = jListSolicitudes.getSelectedIndex();
-            
-            if (Seleccion>=0){
-                modeloLista.removeElementAt(Seleccion);            
-            }
-            
-            JOptionPane.showMessageDialog(null, "¡Solución de solicitud guardada!", "Solución enviada", JOptionPane.INFORMATION_MESSAGE);            
+
+            EliminarCaso(Integer.parseInt(jTextFieldID.getText()));
+
+            JOptionPane.showMessageDialog(null, "¡Solución de solicitud guardada!", "Solución enviada", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solución, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
@@ -587,7 +590,7 @@ public class Administracion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelAtras;
     private javax.swing.JLabel jLabelPublicar;
     private javax.swing.JLabel jLabelSeleccionar;
     private javax.swing.JLabel jLabelTipo;
@@ -595,11 +598,11 @@ public class Administracion extends javax.swing.JPanel {
     private javax.swing.JList jListSolicitudes;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanelAtras;
     private javax.swing.JPanel jPanelCambiarTipo;
     private javax.swing.JPanel jPanelEliminar;
     private javax.swing.JPanel jPanelPublicar;
     private javax.swing.JPanel jPanelSalir;
-    private javax.swing.JPanel jPanelSalir1;
     private javax.swing.JPanel jPanelSeleccionar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
