@@ -4,7 +4,7 @@
  */
 package pcsupport;
 
-import interfaz.Inicio;
+import interfaz.InicioInvitado;
 
 /**
  *
@@ -16,7 +16,7 @@ public class PCSupport {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Inicio in = new Inicio();
+        InicioInvitado in = new InicioInvitado();
         in.setVisible(true);
     }
 }

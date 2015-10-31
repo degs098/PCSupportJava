@@ -14,22 +14,22 @@ import javax.swing.JOptionPane;
  *
  * @author samsung
  */
-public class Inicio extends javax.swing.JFrame {
+public class InicioSoporte extends javax.swing.JFrame {
 
     /**
-     * Creates new form Inicio
+     * Creates new form InicioInvitado
      */
     String ruta = "/imagenes/";
     ImageIcon imagen = new ImageIcon(ruta + "Help.png");
     Software sw = new Software();
     Hardware hw = new Hardware();
     Redes rd = new Redes();
-    SistemaOperativo so = new SistemaOperativo();    
-    Ingresar lg = new Ingresar();
+    SistemaOperativo so = new SistemaOperativo();        
     Bienvenida B = new Bienvenida();
     Usuarios U = new Usuarios();
+    Administracion A = new Administracion();
    
-    public Inicio() {
+    public InicioSoporte() {
         initComponents();
         super.setLocationRelativeTo(null);
         super.setBackground(Color.white);
@@ -41,8 +41,7 @@ public class Inicio extends javax.swing.JFrame {
         contentPane.add(sw);
         contentPane.add(hw);
         contentPane.add(rd);
-        contentPane.add(so);
-        contentPane.add(lg);        
+        contentPane.add(so);               
         contentPane.add(B);
         contentPane.add(U);
 
@@ -52,29 +51,16 @@ public class Inicio extends javax.swing.JFrame {
         hw.setVisible(false);
         sw.setVisible(false);
         rd.setVisible(false);
-        so.setVisible(false);
-        lg.setVisible(false);
+        so.setVisible(false);        
         U.setVisible(false);
         
-/*
-        hw.setBounds(419, 75, 650, 590);
-        sw.setBounds(419, 75, 650, 590);
-        rd.setBounds(419, 75, 650, 590);
-        so.setBounds(419, 75, 650, 590);
-        B.setBounds(419, 75, 650, 590);
-        lg.setBounds(419, 75, 650, 590);*/
-        
-        
 
-
-        //para Uubuntu 
-        hw.setBounds(419, 75, 690, 590);
-        sw.setBounds(419, 75, 690, 590);
-        rd.setBounds(419, 75, 690, 590);
-        so.setBounds(419, 75, 690, 590);
-        B.setBounds(419, 75, 690, 590);
-        lg.setBounds(419, 75, 690, 590);
-        U.setBounds(419, 75, 690, 590);
+        hw.setBounds(459, 75, 667, 590);
+        sw.setBounds(459, 75, 667, 590);
+        rd.setBounds(459, 75, 667, 590);
+        so.setBounds(459, 75, 667, 590);
+        B.setBounds(459, 75, 668, 590);         
+     
          
     }
 
@@ -101,11 +87,11 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         So = new javax.swing.JPanel();
         jLabelSistemaOperativo = new javax.swing.JLabel();
+        AdminSol = new javax.swing.JPanel();
+        jLabelAdminSol = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        Login = new javax.swing.JPanel();
-        jLabelLogin = new javax.swing.JLabel();
-        RegistroUsuarios = new javax.swing.JPanel();
-        jLabelRegistroUsuario = new javax.swing.JLabel();
+        CerrarSesion = new javax.swing.JPanel();
+        jLabelCerrarSesion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -146,7 +132,7 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(HwLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabelHardware)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
         HwLayout.setVerticalGroup(
             HwLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +198,7 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(RdLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabelRedes)
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         RdLayout.setVerticalGroup(
             RdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +231,7 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(SalirLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabelSalir)
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addContainerGap(341, Short.MAX_VALUE))
         );
         SalirLayout.setVerticalGroup(
             SalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,6 +284,39 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        AdminSol.setName("Hw"); // NOI18N
+        AdminSol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AdminSolMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AdminSolMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AdminSolMouseExited(evt);
+            }
+        });
+
+        jLabelAdminSol.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabelAdminSol.setText("Administrar Solicitudes");
+
+        javax.swing.GroupLayout AdminSolLayout = new javax.swing.GroupLayout(AdminSol);
+        AdminSol.setLayout(AdminSolLayout);
+        AdminSolLayout.setHorizontalGroup(
+            AdminSolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AdminSolLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(jLabelAdminSol)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        AdminSolLayout.setVerticalGroup(
+            AdminSolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AdminSolLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelAdminSol)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -315,7 +334,8 @@ public class Inicio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PC_Support))
                     .addComponent(jLabel3))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
+            .addComponent(AdminSol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,106 +346,65 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(PC_Support))
                 .addGap(55, 55, 55)
                 .addComponent(Hw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Sw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Rd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(So, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AdminSol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addContainerGap())
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 106, 193));
 
-        Login.setBackground(new java.awt.Color(0, 106, 193));
-        Login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
-        Login.addMouseListener(new java.awt.event.MouseAdapter() {
+        CerrarSesion.setBackground(new java.awt.Color(0, 106, 193));
+        CerrarSesion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LoginMouseClicked(evt);
+                CerrarSesionMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                LoginMouseEntered(evt);
+                CerrarSesionMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                LoginMouseExited(evt);
+                CerrarSesionMouseExited(evt);
             }
         });
 
-        jLabelLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelLogin.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelLogin.setText("Login");
-        jLabelLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelCerrarSesion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCerrarSesion.setText("Cerrar Sesión");
+        jLabelCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelLoginMouseClicked(evt);
+                jLabelCerrarSesionMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelLoginMouseEntered(evt);
+                jLabelCerrarSesionMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelLoginMouseExited(evt);
+                jLabelCerrarSesionMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
-        Login.setLayout(LoginLayout);
-        LoginLayout.setHorizontalGroup(
-            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jLabelLogin)
-                .addGap(25, 25, 25))
+        javax.swing.GroupLayout CerrarSesionLayout = new javax.swing.GroupLayout(CerrarSesion);
+        CerrarSesion.setLayout(CerrarSesionLayout);
+        CerrarSesionLayout.setHorizontalGroup(
+            CerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CerrarSesionLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jLabelCerrarSesion)
+                .addGap(18, 18, 18))
         );
-        LoginLayout.setVerticalGroup(
-            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        RegistroUsuarios.setBackground(new java.awt.Color(0, 106, 193));
-        RegistroUsuarios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
-        RegistroUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RegistroUsuariosMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                RegistroUsuariosMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                RegistroUsuariosMouseEntered(evt);
-            }
-        });
-
-        jLabelRegistroUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelRegistroUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelRegistroUsuario.setText("Registro Usuarios");
-        jLabelRegistroUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelRegistroUsuarioMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelRegistroUsuarioMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelRegistroUsuarioMouseEntered(evt);
-            }
-        });
-
-        javax.swing.GroupLayout RegistroUsuariosLayout = new javax.swing.GroupLayout(RegistroUsuarios);
-        RegistroUsuarios.setLayout(RegistroUsuariosLayout);
-        RegistroUsuariosLayout.setHorizontalGroup(
-            RegistroUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistroUsuariosLayout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(jLabelRegistroUsuario)
-                .addContainerGap())
-        );
-        RegistroUsuariosLayout.setVerticalGroup(
-            RegistroUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistroUsuariosLayout.createSequentialGroup()
-                .addComponent(jLabelRegistroUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+        CerrarSesionLayout.setVerticalGroup(
+            CerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CerrarSesionLayout.createSequentialGroup()
+                .addComponent(jLabelCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -434,20 +413,16 @@ public class Inicio extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(366, Short.MAX_VALUE)
-                .addComponent(RegistroUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addContainerGap(518, Short.MAX_VALUE)
+                .addComponent(CerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(RegistroUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(CerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -456,14 +431,14 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(199, 577, Short.MAX_VALUE))
+                .addGap(199, 584, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -526,27 +501,13 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SalirMouseClicked
 
-    private void LoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseEntered
-        Login.setBackground(new java.awt.Color(244, 244, 244));
-        jLabelLogin.setForeground(Color.BLACK);
-        setCursor(Cursor.HAND_CURSOR);
-
-    }//GEN-LAST:event_LoginMouseEntered
-
-    private void LoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseExited
-        Login.setBackground(new java.awt.Color(0, 106, 193));
-        jLabelLogin.setForeground(Color.WHITE);
-        setCursor(Cursor.DEFAULT_CURSOR);
-    }//GEN-LAST:event_LoginMouseExited
-
     private void SwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SwMouseClicked
         B.setVisible(false);
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(true);
         so.setVisible(false);
-        lg.setVisible(false);
-        
+        U.setVisible(false);
     }//GEN-LAST:event_SwMouseClicked
 
     private void HwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HwMouseClicked
@@ -555,8 +516,7 @@ public class Inicio extends javax.swing.JFrame {
         hw.setVisible(true);
         sw.setVisible(false);
         so.setVisible(false);
-        lg.setVisible(false);
-        
+        U.setVisible(false);
     }//GEN-LAST:event_HwMouseClicked
 
     private void RdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RdMouseClicked
@@ -565,54 +525,16 @@ public class Inicio extends javax.swing.JFrame {
         hw.setVisible(false);
         sw.setVisible(false);
         so.setVisible(false);
-        lg.setVisible(false);
-        
+        U.setVisible(false);
     }//GEN-LAST:event_RdMouseClicked
-
-    private void jLabelLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseClicked
-        B.setVisible(false);
-        rd.setVisible(false);
-        hw.setVisible(false);
-        sw.setVisible(false);
-        so.setVisible(false);
-        lg.setVisible(true);
-        
-
-    }//GEN-LAST:event_jLabelLoginMouseClicked
-
-    private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
-        B.setVisible(false);
-        rd.setVisible(false);
-        hw.setVisible(false);
-        sw.setVisible(false);
-        so.setVisible(false);
-        lg.setVisible(true);        
-
-        
-
-    }//GEN-LAST:event_LoginMouseClicked
-
-    private void jLabelLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseEntered
-        Login.setBackground(new java.awt.Color(244, 244, 244));
-        jLabelLogin.setForeground(Color.BLACK);
-        setCursor(Cursor.HAND_CURSOR);
-    }//GEN-LAST:event_jLabelLoginMouseEntered
-
-    private void jLabelLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseExited
-        Login.setBackground(new java.awt.Color(0, 106, 193));
-        jLabelLogin.setForeground(Color.WHITE);
-        setCursor(Cursor.DEFAULT_CURSOR);
-    }//GEN-LAST:event_jLabelLoginMouseExited
 
     private void PC_SupportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC_SupportMouseClicked
         B.setVisible(true);
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(false);
-        so.setVisible(false);
-        lg.setVisible(false);
-        
-
+        so.setVisible(false);      
+        U.setVisible(false);
     }//GEN-LAST:event_PC_SupportMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -621,8 +543,7 @@ public class Inicio extends javax.swing.JFrame {
         hw.setVisible(false);
         sw.setVisible(false);
         so.setVisible(false);
-        lg.setVisible(false);
-        
+        U.setVisible(false);        
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void SoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoMouseClicked
@@ -631,8 +552,7 @@ public class Inicio extends javax.swing.JFrame {
         hw.setVisible(false);
         sw.setVisible(false);
         so.setVisible(true);
-        lg.setVisible(false);
-       
+        U.setVisible(false);
     }//GEN-LAST:event_SoMouseClicked
 
     private void SoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoMouseEntered
@@ -647,57 +567,61 @@ public class Inicio extends javax.swing.JFrame {
         setCursor(Cursor.DEFAULT_CURSOR);
     }//GEN-LAST:event_SoMouseExited
 
-    private void jLabelRegistroUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegistroUsuarioMouseClicked
+    private void jLabelCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCerrarSesionMouseClicked
         // TODO add your handling code here:
-         B.setVisible(false);
-        rd.setVisible(false);
-        hw.setVisible(false);
-        sw.setVisible(false);
-        so.setVisible(false);
-        lg.setVisible(false);
-       
-        U.setVisible(true);
-    }//GEN-LAST:event_jLabelRegistroUsuarioMouseClicked
+        CerrarSesionMouseClicked(evt);
+    }//GEN-LAST:event_jLabelCerrarSesionMouseClicked
 
-    private void jLabelRegistroUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegistroUsuarioMouseEntered
+    private void jLabelCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCerrarSesionMouseEntered
         // TODO add your handling code here:
-       RegistroUsuarios.setBackground(new java.awt.Color(244, 244, 244));
-        jLabelRegistroUsuario.setForeground(Color.BLACK);
+        CerrarSesion.setBackground(new java.awt.Color(244, 244, 244));
+        jLabelCerrarSesion.setForeground(Color.BLACK);
         setCursor(Cursor.HAND_CURSOR);
-    }//GEN-LAST:event_jLabelRegistroUsuarioMouseEntered
+    }//GEN-LAST:event_jLabelCerrarSesionMouseEntered
 
-    private void jLabelRegistroUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegistroUsuarioMouseExited
+    private void jLabelCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCerrarSesionMouseExited
         // TODO add your handling code here:
-       RegistroUsuarios.setBackground(new java.awt.Color(0, 106, 193));
-        jLabelRegistroUsuario.setForeground(Color.WHITE);
+        CerrarSesion.setBackground(new java.awt.Color(0, 106, 193));
+        jLabelCerrarSesion.setForeground(Color.WHITE);
         setCursor(Cursor.DEFAULT_CURSOR);
-    }//GEN-LAST:event_jLabelRegistroUsuarioMouseExited
+    }//GEN-LAST:event_jLabelCerrarSesionMouseExited
 
-    private void RegistroUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroUsuariosMouseClicked
+    private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
-         B.setVisible(false);
-        rd.setVisible(false);
-        hw.setVisible(false);
-        sw.setVisible(false);
-        so.setVisible(false);
-        lg.setVisible(false);
-       
-        U.setVisible(true);
-    }//GEN-LAST:event_RegistroUsuariosMouseClicked
+        InicioInvitado ii = new InicioInvitado();
+        super.dispose();
+        ii.setVisible(true);
+    }//GEN-LAST:event_CerrarSesionMouseClicked
 
-    private void RegistroUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroUsuariosMouseEntered
+    private void CerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseEntered
         // TODO add your handling code here:
-         RegistroUsuarios.setBackground(new java.awt.Color(244, 244, 244));
-        jLabelRegistroUsuario.setForeground(Color.BLACK);
+         CerrarSesion.setBackground(new java.awt.Color(244, 244, 244));
+        jLabelCerrarSesion.setForeground(Color.BLACK);
         setCursor(Cursor.HAND_CURSOR);
-    }//GEN-LAST:event_RegistroUsuariosMouseEntered
+    }//GEN-LAST:event_CerrarSesionMouseEntered
 
-    private void RegistroUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroUsuariosMouseExited
+    private void CerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseExited
         // TODO add your handling code here:
-        RegistroUsuarios.setBackground(new java.awt.Color(0, 106, 193));
-        jLabelRegistroUsuario.setForeground(Color.WHITE);
+        CerrarSesion.setBackground(new java.awt.Color(0, 106, 193));
+        jLabelCerrarSesion.setForeground(Color.WHITE);
         setCursor(Cursor.DEFAULT_CURSOR);
-    }//GEN-LAST:event_RegistroUsuariosMouseExited
+    }//GEN-LAST:event_CerrarSesionMouseExited
+
+    private void AdminSolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminSolMouseClicked
+        JOptionPane.showMessageDialog(null, "Has abierto el panel de Administración");
+    }//GEN-LAST:event_AdminSolMouseClicked
+
+    private void AdminSolMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminSolMouseEntered
+        AdminSol.setBackground(new java.awt.Color(0, 106, 193));
+        jLabelAdminSol.setForeground(new java.awt.Color(255, 255, 255));
+        setCursor(Cursor.HAND_CURSOR);
+    }//GEN-LAST:event_AdminSolMouseEntered
+
+    private void AdminSolMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminSolMouseExited
+        AdminSol.setBackground(new java.awt.Color(240, 240, 240));
+        jLabelAdminSol.setForeground(new java.awt.Color(0, 0, 0));
+        setCursor(Cursor.DEFAULT_CURSOR);
+    }//GEN-LAST:event_AdminSolMouseExited
 
     /**
      * @param args the command line arguments
@@ -717,16 +641,16 @@ public class Inicio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class
+            java.util.logging.Logger.getLogger(InicioSoporte.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class
+            java.util.logging.Logger.getLogger(InicioSoporte.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class
+            java.util.logging.Logger.getLogger(InicioSoporte.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class
+            java.util.logging.Logger.getLogger(InicioSoporte.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -734,25 +658,25 @@ public class Inicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicio().setVisible(true);
+                new InicioSoporte().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel AdminSol;
+    private javax.swing.JPanel CerrarSesion;
     private javax.swing.JPanel Hw;
-    private javax.swing.JPanel Login;
     private javax.swing.JLabel PC_Support;
     private javax.swing.JPanel Rd;
-    private javax.swing.JPanel RegistroUsuarios;
     private javax.swing.JPanel Salir;
     private javax.swing.JPanel So;
     private javax.swing.JPanel Sw;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelAdminSol;
+    private javax.swing.JLabel jLabelCerrarSesion;
     private javax.swing.JLabel jLabelHardware;
-    private javax.swing.JLabel jLabelLogin;
     private javax.swing.JLabel jLabelRedes;
-    private javax.swing.JLabel jLabelRegistroUsuario;
     private javax.swing.JLabel jLabelSalir;
     private javax.swing.JLabel jLabelSistemaOperativo;
     private javax.swing.JLabel jLabelSoftware;

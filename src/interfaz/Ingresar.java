@@ -262,12 +262,15 @@ public class Ingresar extends javax.swing.JPanel {
         } else {
 
             if (u.getUsuario() != "0") {
-
-                PostLogin MiMenu = new PostLogin();
-                MiMenu.dispose();
-
-                MiMenu.setExtendedState(WHEN_FOCUSED);
-                MiMenu.setVisible(true);
+                if(u.getPerfil().equals("Administrador")){
+                    ((java.awt.Window) getRootPane().getParent()).dispose();
+                    InicioAdministrador ia = new InicioAdministrador();
+                    ia.setVisible(true);
+                }else{
+                    ((java.awt.Window) getRootPane().getParent()).dispose();
+                    InicioSoporte is = new InicioSoporte();
+                    is.setVisible(true);
+                }
             } else {
                 this.setVisible(true);
 
