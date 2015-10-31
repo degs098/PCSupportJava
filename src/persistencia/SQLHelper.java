@@ -15,7 +15,7 @@ public class SQLHelper {
     }
     
     public static String getValidarIngreso(String user, String pdw) {
-        return "SELECT usuario,nombre, clave, estado "
+        return "SELECT usuario,nombre, clave, estado, perfil "
                 + "FROM tblusuario "
                 + " WHERE usuario='" + user + "' AND clave='" + pdw + "' ";
     }//fin metodo validar

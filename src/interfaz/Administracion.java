@@ -506,7 +506,6 @@ public class Administracion extends javax.swing.JPanel {
                 modeloLista.addElement("ID: " + rs.getString(1) + " " + "CASO: " + rs.getString(2) + " ");
                 jListSolicitudes.setModel(modeloLista);
                 if (rs.getString(3) == "Hardware") {
-
                 } else if (rs.getString(3) == "Software") {
                 } else if (rs.getString(3) == "Redes") {
                 } else if (rs.getString(3) == "Sistema Operativo") {
@@ -524,6 +523,7 @@ public class Administracion extends javax.swing.JPanel {
 
             while (rs.next()) {
                 if (rs.getRow() == jListSolicitudes.getSelectedIndex() + 1) {
+                    
                     jTextFieldID.setText(rs.getString(1));
                     jTextFieldIDCaso.setText(rs.getString(2));
                     jComboBoxTipos.setSelectedItem(rs.getString(3));
