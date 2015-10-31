@@ -33,6 +33,7 @@ public class Daos {
                 u.setNombre(r.getString(2));
                 u.setClave(r.getString(3));
                 u.setEstado(r.getString(4));
+                u.setPerfil(r.getString(5));
 
             }// fin while
         } catch (Exception er) {

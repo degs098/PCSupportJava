@@ -14,6 +14,7 @@ public class Usuario {
     String nombre;
     String clave;
     String estado;
+    String perfil;
 
     public String getUsuario() {
         return usuario;
@@ -22,12 +23,12 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String usuario, String nombre, String clave,String estado) {
+    public Usuario(String usuario, String nombre, String clave,String estado, String perfil) {
         this.usuario = usuario;
         this.nombre = nombre;
         this.clave = clave;       
         this.estado = estado;
-        
+        this.perfil = perfil;        
     }//fin constructor con parametros
 
     public void setUsuario(String usuario) {
@@ -56,6 +57,14 @@ public class Usuario {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
     }
     
 }
