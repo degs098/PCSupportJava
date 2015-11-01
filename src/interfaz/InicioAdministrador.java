@@ -59,7 +59,8 @@ public class InicioAdministrador extends javax.swing.JFrame {
         sw.setBounds(459, 75, 667, 590);
         rd.setBounds(459, 75, 667, 590);
         so.setBounds(459, 75, 667, 590);
-        B.setBounds(459, 75, 668, 590);         
+        B.setBounds(459, 75, 668, 590);
+        U.setBounds(459, 75, 768, 590);
      
          
     }

@@ -92,14 +92,14 @@ public class Ingresar extends javax.swing.JPanel {
             .addGroup(AceptarLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jLabelAceptar)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         AceptarLayout.setVerticalGroup(
             AceptarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AceptarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelAceptar)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         Cancelar.setBackground(new java.awt.Color(0, 106, 193));
@@ -169,15 +169,15 @@ public class Ingresar extends javax.swing.JPanel {
                                 .addGap(73, 73, 73)
                                 .addComponent(jLabel1))
                             .addComponent(jLabel3))))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(161, 161, 161))
         );
         layout.setVerticalGroup(
@@ -204,7 +204,7 @@ public class Ingresar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -262,7 +262,7 @@ public class Ingresar extends javax.swing.JPanel {
         } else {
 
             if (u.getUsuario() != "0") {
-                if(u.getPerfil().equals("Administrador")){
+                    if(u.getPerfil().equals("Administrador")){
                     ((java.awt.Window) getRootPane().getParent()).dispose();
                     InicioAdministrador ia = new InicioAdministrador();
                     ia.setVisible(true);

@@ -11,6 +11,7 @@ import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,15 +25,16 @@ public class Usuarios extends javax.swing.JPanel {
     /**
      * Creates new form Administracion
      */
-    private DefaultListModel modeloLista = new DefaultListModel();
+    DefaultTableModel modeloLista;
     Connection con = new conexion().getCon();
     int Seleccion = -1;
 
     public Usuarios() {
-        initComponents();
-        DefaultTableModel modelo = new DefaultTableModel();
+
+        modeloLista = new DefaultTableModel(null, getColumnas());
         llenarTabla();
         super.setBounds(419, 75, 650, 590);
+        initComponents();
     }
 
     /**
@@ -72,6 +74,7 @@ public class Usuarios extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableUsuarios = new javax.swing.JTable();
+        jComboBoxPerfil = new javax.swing.JComboBox();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -132,6 +135,12 @@ public class Usuarios extends javax.swing.JPanel {
         jLabelGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelGuardarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelGuardarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelGuardarMouseEntered(evt);
             }
         });
 
@@ -261,8 +270,6 @@ public class Usuarios extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Estado");
 
-        jTextFieldEstado.setEditable(false);
-
         jPanelSalir.setBackground(new java.awt.Color(0, 106, 193));
         jPanelSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanelSalir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -336,19 +343,15 @@ public class Usuarios extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Clave");
 
-        jTableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Usuario", "Nombre", "Clave", "Estado"
-            }
-        ));
+        jTableUsuarios.setModel(modeloLista);
         jScrollPane2.setViewportView(jTableUsuarios);
+
+        jComboBoxPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Soporte", "Invitado"}));
+        jComboBoxPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPerfilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -377,20 +380,23 @@ public class Usuarios extends javax.swing.JPanel {
                             .addComponent(jPasswordFieldclave, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                             .addComponent(jTextFieldEstado))))
                 .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108))
             .addGroup(layout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(jPanelGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanelActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanelEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanelEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -416,7 +422,8 @@ public class Usuarios extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -425,7 +432,7 @@ public class Usuarios extends javax.swing.JPanel {
                     .addComponent(jPanelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 29, Short.MAX_VALUE))
+                .addGap(0, 157, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -478,16 +485,16 @@ public class Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanelActualizarMouseExited
 
     private void jLabelGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGuardarMouseClicked
-        Guardar(jTextFieldNombre.getText(), jTextFieldNombre.getText(), jPasswordFieldclave.getText());
+        Guardar(jTextFieldUsuario.getText(), jTextFieldNombre.getText(), jPasswordFieldclave.getText(), (String) jComboBoxPerfil.getSelectedItem());
     }//GEN-LAST:event_jLabelGuardarMouseClicked
 
     private void jPanelGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelGuardarMouseClicked
-
+        Guardar(jTextFieldUsuario.getText(), jTextFieldNombre.getText(), jPasswordFieldclave.getText(), (String) jComboBoxPerfil.getSelectedItem());
     }//GEN-LAST:event_jPanelGuardarMouseClicked
 
     private void jPanelEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelEliminarMouseClicked
         // TODO add your handling code here:
-
+        Eliminar(jTextFieldUsuario.getText());
     }//GEN-LAST:event_jPanelEliminarMouseClicked
 
     private void jPanelSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSalirMouseClicked
@@ -496,7 +503,7 @@ public class Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanelSalirMouseClicked
 
     private void jPanelBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBuscarMouseClicked
-
+        Buscar(jTextFieldUsuario.getText());
     }//GEN-LAST:event_jPanelBuscarMouseClicked
 
     private void jPanelAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelAtrasMouseClicked
@@ -504,36 +511,172 @@ public class Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanelAtrasMouseClicked
 
     private void jPanelActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelActualizarMouseClicked
-
+        Actualizar(jTextFieldUsuario.getText(), jTextFieldNombre.getText(), jPasswordFieldclave.getText(), jTextFieldEstado.getText(), (String) jComboBoxPerfil.getSelectedItem());
     }//GEN-LAST:event_jPanelActualizarMouseClicked
 
     private void jTextFieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUsuarioActionPerformed
 
-    public void Guardar(String usuario, String nombre, String clave) {
+    private void jComboBoxPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPerfilActionPerformed
+
+    private void jLabelGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGuardarMouseEntered
+        jPanelGuardar.setBackground(new java.awt.Color(244, 244, 244));
+        jLabelGuardar.setForeground(Color.BLACK);
+        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_jLabelGuardarMouseEntered
+
+    private void jLabelGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGuardarMouseExited
+        jPanelGuardar.setBackground(new java.awt.Color(0, 106, 193));
+        jLabelGuardar.setForeground(Color.WHITE);
+        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jLabelGuardarMouseExited
+
+    public void Guardar(String usuario, String nombre, String clave, String perfil) {
         try {
             if (usuario != "q") {
 
-                PreparedStatement ps = con.prepareStatement("INSERT INTO TBLUSUARIO (usuario,nombre, clave, estado) VALUES \n"
-                        + "        ('" + usuario + "','" + nombre + "', '" + clave + "', 'activo')");
+                PreparedStatement ps = con.prepareStatement("INSERT INTO TBLUSUARIO (usuario,nombre, clave, estado, perfil) VALUES \n"
+                        + "        ('" + usuario + "','" + nombre + "', '" + clave + "', 'activo','" + perfil + "')");
                 ResultSet rs = ps.executeQuery();
             } else {
                 JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
             JOptionPane.showMessageDialog(null, "¡Usuario guardado!", "Usuario guardado", JOptionPane.INFORMATION_MESSAGE);
+            vaciarTabla();
+            llenarTabla();
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void llenarTabla() {
-       
+    public void Actualizar(String usuario, String nombre, String clave, String estado, String perfil) {
+        /* "update tblusuario set nombre=?, clave=?, perfil=?, email=?, estado=? ,genero=? "
+         + "  where usuario=?";*/
+        try {
+            if (usuario != "q") {
+
+                PreparedStatement ps = con.prepareStatement("update tblusuario set nombre='" + nombre + "', clave='" + clave + "',"
+                        + " estado='" + estado + "', perfil='" + perfil + "'  where usuario='" + usuario + "'");
+                ResultSet rs = ps.executeQuery();
+            } else {
+                JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            JOptionPane.showMessageDialog(null, "¡Usuario Actualizado!", "Usuario Actualizado", JOptionPane.INFORMATION_MESSAGE);
+            vaciarTabla();
+            llenarTabla();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//fin actualizar dato
+
+    public void Eliminar(String usuario) {
+        try {
+            if (usuario != "q") {
+
+                PreparedStatement ps = con.prepareStatement("DELETE FROM TBLUSUARIO WHERE USUARIO='" + usuario + "'");;
+                ResultSet rs = ps.executeQuery();
+            } else {
+                JOptionPane.showMessageDialog(null, "Hubo un error , porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            JOptionPane.showMessageDialog(null, "¡Usuario Eliminado!", "Usuario Eliminado", JOptionPane.INFORMATION_MESSAGE);
+            vaciarTabla();
+            llenarTabla();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
+    public void Buscar(String usuario) {
+        try {
+            if (usuario != "q") {
+
+                PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLUSUARIO WHERE USUARIO='" + usuario + "'");;
+                ResultSet rs = ps.executeQuery();
+                String cadena[] = new String[5];
+
+                while (rs.next()) {
+                    cadena = new String[5];
+                    for (int x = 0; x < 5; ++x) {
+                        cadena[x] = rs.getObject(x + 1).toString();
+                    }
+                }
+                llenarCampos(cadena[0],cadena[1],cadena[2],cadena[3]);
+            } else {
+                JOptionPane.showMessageDialog(null, "Hubo un error , porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            JOptionPane.showMessageDialog(null, "¡Usuario Encontrado!", "Usuario Encontrado", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    public void llenarTabla() {
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLUSUARIO");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Object[] fila = new Object[5];//Creamos un Objeto con tantos parámetros como datos retorne cada fila 
+                // de la consulta
+
+                for (int i = 0; i < 5; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+
+                modeloLista.addRow(fila); // Añade una fila al final del modelo de la tabla
+            }
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    private String[] getColumnas() {
+        String columna[] = new String[]{"usuario", "nombre", "clave", "estado", " perfil"};
+        return columna;
+    }
+
+    public void vaciarTabla() {
+        while (modeloLista.getRowCount() > 0) {
+            modeloLista.removeRow(0);
+        }
+    }
+
+    public void llenarCampos(String usuario, String nombre, String estado, String perfil) {
+        int i = 0;
+        jTextFieldUsuario.setText(usuario);
+        jTextFieldNombre.setText(nombre);
+        jTextFieldEstado.setText(estado);
+
+        if (perfil == "Administrador") {
+            i = 0;
+        } else if (perfil == "Soporte") {
+            i = 1;
+        } else if (perfil == "Invitado") {
+            i = 2;
+        }
+
+        jComboBoxPerfil.setSelectedIndex(i);
+
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox jComboBoxPerfil;
     private javax.swing.JLabel jLabeEliminar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
