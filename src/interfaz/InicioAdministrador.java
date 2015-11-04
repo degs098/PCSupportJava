@@ -647,6 +647,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_CerrarSesionMouseExited
 
     private void AdminSolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminSolMouseClicked
+        
         JOptionPane.showMessageDialog(null, "Has abierto el panel de Administración");
     }//GEN-LAST:event_AdminSolMouseClicked
 

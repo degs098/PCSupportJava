@@ -71,6 +71,9 @@ public class Bienvenida extends javax.swing.JPanel {
 
         panelHardware.setBackground(new java.awt.Color(255, 255, 255));
         panelHardware.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelHardwareMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelHardwareMouseEntered(evt);
             }
@@ -327,6 +330,11 @@ public class Bienvenida extends javax.swing.JPanel {
         panelSistemaOperativo.setBorder(BorderFactory.createEmptyBorder());
         panelSistemaOperativo.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_panelSistemaOperativoMouseExited
+
+    private void panelHardwareMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHardwareMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelHardwareMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JBienvenida;
     private javax.swing.JLabel jLabel1;

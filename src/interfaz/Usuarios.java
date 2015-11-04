@@ -8,13 +8,16 @@ package interfaz;
 import BaseDatos.conexion;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.io.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -121,11 +124,11 @@ public class Usuarios extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanelGuardarMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanelGuardarMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanelGuardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanelGuardarMouseExited(evt);
             }
         });
 
@@ -136,11 +139,11 @@ public class Usuarios extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelGuardarMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelGuardarMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabelGuardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelGuardarMouseExited(evt);
             }
         });
 
@@ -331,6 +334,15 @@ public class Usuarios extends javax.swing.JPanel {
             }
         });
 
+        jTextFieldNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreKeyTyped(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Usuario");
@@ -485,11 +497,84 @@ public class Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanelActualizarMouseExited
 
     private void jLabelGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGuardarMouseClicked
-        Guardar(jTextFieldUsuario.getText(), jTextFieldNombre.getText(), jPasswordFieldclave.getText(), (String) jComboBoxPerfil.getSelectedItem());
+    String usuario = jTextFieldUsuario.getText();
+    String nombre = jTextFieldNombre.getText();
+    String psw = jPasswordFieldclave.getText();
+
+    if (usuario.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Campo de usuario vacío", "Error",0);
+        } else {
+        int limite = 8;
+        if(usuario.length()>=limite){
+            evt.consume();
+            if (nombre.length() == 0) {
+                    JOptionPane.showMessageDialog(null, "Campo de nombre vacío ", "Error", 0);
+                } else {
+                    if (psw.length() == 0) {
+                        JOptionPane.showMessageDialog(null, "Campo de clave vacía", "Error", 0);
+                    } else {
+                        if(psw.length()>=limite){
+                            evt.consume();
+                            if(nombre.equals(psw)){
+                                JOptionPane.showMessageDialog(null, "La clave no puede ser el nombre", "Error", 0);
+                            } else {
+                            Guardar(jTextFieldUsuario.getText(), jTextFieldNombre.getText(), jPasswordFieldclave.getText(), (String) jComboBoxPerfil.getSelectedItem());
+                            jTextFieldEstado.setText("");
+                            jTextFieldID1.setText("");
+                            jTextFieldNombre.setText("");
+                            jTextFieldUsuario.setText("");
+                            jPasswordFieldclave.setText("");
+                            }
+                        } else{                       
+                            JOptionPane.showMessageDialog(null, "La clave debe contener mínimo 8 caracteres", "Error", 0);
+                        }
+                    }                             
+                }
+        } else {
+            JOptionPane.showMessageDialog(null, "El usuario debe contener mínimo 8 caracteres", "Error", 0);     
+        }
+    }   
     }//GEN-LAST:event_jLabelGuardarMouseClicked
 
     private void jPanelGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelGuardarMouseClicked
-        Guardar(jTextFieldUsuario.getText(), jTextFieldNombre.getText(), jPasswordFieldclave.getText(), (String) jComboBoxPerfil.getSelectedItem());
+    String usuario = jTextFieldUsuario.getText();
+    String nombre = jTextFieldNombre.getText();
+    String psw = jPasswordFieldclave.getText();
+
+    if (usuario.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Campo de usuario vacío", "Error",0);
+        } else {
+        int limite = 8;
+        if(usuario.length()>=limite){
+            evt.consume();
+            if (nombre.length() == 0) {
+                    JOptionPane.showMessageDialog(null, "Campo de nombre vacío ", "Error", 0);
+                } else {
+                    if (psw.length() == 0) {
+                        JOptionPane.showMessageDialog(null, "Campo de clave vacía", "Error", 0);
+                    } else {
+                        if(psw.length()>=limite){
+                            evt.consume();
+                            if(nombre.equals(psw)){
+                                JOptionPane.showMessageDialog(null, "La clave no puede ser el nombre", "Error", 0);
+                            } else {
+                            Guardar(jTextFieldUsuario.getText(), jTextFieldNombre.getText(), jPasswordFieldclave.getText(), (String) jComboBoxPerfil.getSelectedItem());
+                            jTextFieldEstado.setText("");
+                            jTextFieldID1.setText("");
+                            jTextFieldNombre.setText("");
+                            jTextFieldUsuario.setText("");
+                            jPasswordFieldclave.setText("");
+                            }
+                        } else{                       
+                            JOptionPane.showMessageDialog(null, "La clave debe contener mínimo 8 caracteres", "Error", 0);
+                        }
+                    }                             
+                }
+        } else {
+            JOptionPane.showMessageDialog(null, "El usuario debe contener mínimo 8 caracteres", "Error", 0);     
+        }
+    } 
+        //Guardar(jTextFieldUsuario.getText(), jTextFieldNombre.getText(), jPasswordFieldclave.getText(), (String) jComboBoxPerfil.getSelectedItem());
     }//GEN-LAST:event_jPanelGuardarMouseClicked
 
     private void jPanelEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelEliminarMouseClicked
@@ -533,6 +618,21 @@ public class Usuarios extends javax.swing.JPanel {
         jLabelGuardar.setForeground(Color.WHITE);
         setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_jLabelGuardarMouseExited
+
+    private void jTextFieldNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyReleased
+
+    }//GEN-LAST:event_jTextFieldNombreKeyReleased
+
+    private void jTextFieldNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyTyped
+        int k = (int) evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null, "No puede ingresar numeros!!!", "Ventana Error Datos", JOptionPane.ERROR_MESSAGE);
+        }
+        if (k == 10) {
+            jTextFieldNombre.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldNombreKeyTyped
 
     public void Guardar(String usuario, String nombre, String clave, String perfil) {
         try {
