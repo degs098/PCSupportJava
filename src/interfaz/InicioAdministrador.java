@@ -4,9 +4,14 @@
  */
 package interfaz;
 
+import BaseDatos.conexion;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -28,14 +33,13 @@ public class InicioAdministrador extends javax.swing.JFrame {
     Bienvenida B = new Bienvenida();
     Usuarios U = new Usuarios();
     Administracion A = new Administracion();
+    Connection con = new conexion().getCon();
    
     public InicioAdministrador() {
         initComponents();
         super.setLocationRelativeTo(null);
         super.setBackground(Color.white);
-
-
-
+        
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
         contentPane.add(sw);
@@ -44,6 +48,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
         contentPane.add(so);               
         contentPane.add(B);
         contentPane.add(U);
+        contentPane.add(A);
 
 
         setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());
@@ -53,14 +58,15 @@ public class InicioAdministrador extends javax.swing.JFrame {
         rd.setVisible(false);
         so.setVisible(false);        
         U.setVisible(false);
-        
+        A.setVisible(false);
 
         hw.setBounds(459, 75, 667, 590);
         sw.setBounds(459, 75, 667, 590);
         rd.setBounds(459, 75, 667, 590);
         so.setBounds(459, 75, 667, 590);
         B.setBounds(459, 75, 668, 590);
-        U.setBounds(459, 75, 768, 590);
+        U.setBounds(459, 75, 668, 590);
+        A.setBounds(459, 75, 668, 590);
      
          
     }
@@ -84,7 +90,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
         jLabelRedes = new javax.swing.JLabel();
         Salir = new javax.swing.JPanel();
         jLabelSalir = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        Logo = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         So = new javax.swing.JPanel();
         jLabelSistemaOperativo = new javax.swing.JLabel();
@@ -244,10 +250,10 @@ public class InicioAdministrador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logo.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logo.png"))); // NOI18N
+        Logo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                LogoMouseClicked(evt);
             }
         });
 
@@ -334,7 +340,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
         });
 
         jLabelRegisUsu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabelRegisUsu.setText("Registrar Usuarios");
+        jLabelRegisUsu.setText("Administrar Usuarios");
 
         javax.swing.GroupLayout RegisUsuLayout = new javax.swing.GroupLayout(RegisUsu);
         RegisUsu.setLayout(RegisUsuLayout);
@@ -342,7 +348,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             RegisUsuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RegisUsuLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addComponent(jLabelRegisUsu)
+                .addComponent(jLabelRegisUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         RegisUsuLayout.setVerticalGroup(
@@ -366,7 +372,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PC_Support))
                     .addComponent(jLabel3))
@@ -379,7 +385,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PC_Support))
                 .addGap(55, 55, 55)
                 .addComponent(Hw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -547,6 +553,12 @@ public class InicioAdministrador extends javax.swing.JFrame {
         sw.setVisible(true);
         so.setVisible(false);
         U.setVisible(false);
+        A.setVisible(false);
+        try {
+            con.commit();
+        } catch (SQLException ex) {
+            Logger.getLogger(InicioAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_SwMouseClicked
 
     private void HwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HwMouseClicked
@@ -556,6 +568,12 @@ public class InicioAdministrador extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         U.setVisible(false);
+        A.setVisible(false);
+        try {
+            con.commit();
+        } catch (SQLException ex) {
+            Logger.getLogger(InicioAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_HwMouseClicked
 
     private void RdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RdMouseClicked
@@ -565,6 +583,12 @@ public class InicioAdministrador extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         U.setVisible(false);
+        A.setVisible(false);
+        try {
+            con.commit();
+        } catch (SQLException ex) {
+            Logger.getLogger(InicioAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_RdMouseClicked
 
     private void PC_SupportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC_SupportMouseClicked
@@ -574,16 +598,18 @@ public class InicioAdministrador extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);      
         U.setVisible(false);
+        A.setVisible(false);
     }//GEN-LAST:event_PC_SupportMouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void LogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoMouseClicked
         B.setVisible(true);
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(false);
         so.setVisible(false);
-        U.setVisible(false);        
-    }//GEN-LAST:event_jLabel2MouseClicked
+        U.setVisible(false);  
+        A.setVisible(false);
+    }//GEN-LAST:event_LogoMouseClicked
 
     private void SoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoMouseClicked
         B.setVisible(false);
@@ -592,6 +618,12 @@ public class InicioAdministrador extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(true);
         U.setVisible(false);
+        A.setVisible(false);
+        try {
+            con.commit();
+        } catch (SQLException ex) {
+            Logger.getLogger(InicioAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_SoMouseClicked
 
     private void SoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoMouseEntered
@@ -648,7 +680,18 @@ public class InicioAdministrador extends javax.swing.JFrame {
 
     private void AdminSolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminSolMouseClicked
         
-        JOptionPane.showMessageDialog(null, "Has abierto el panel de Administración");
+        B.setVisible(false);
+        rd.setVisible(false);
+        hw.setVisible(false);
+        sw.setVisible(false);
+        so.setVisible(false);
+        U.setVisible(false);
+        A.setVisible(true);
+        try {
+            con.commit();
+        } catch (SQLException ex) {
+            Logger.getLogger(InicioAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_AdminSolMouseClicked
 
     private void AdminSolMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminSolMouseEntered
@@ -670,6 +713,12 @@ public class InicioAdministrador extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);    
         U.setVisible(true);
+        A.setVisible(false);
+        try {
+            con.commit();
+        } catch (SQLException ex) {
+            Logger.getLogger(InicioAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_RegisUsuMouseClicked
 
     private void RegisUsuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegisUsuMouseEntered
@@ -727,13 +776,13 @@ public class InicioAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel AdminSol;
     private javax.swing.JPanel CerrarSesion;
     private javax.swing.JPanel Hw;
+    private javax.swing.JLabel Logo;
     private javax.swing.JLabel PC_Support;
     private javax.swing.JPanel Rd;
     private javax.swing.JPanel RegisUsu;
     private javax.swing.JPanel Salir;
     private javax.swing.JPanel So;
     private javax.swing.JPanel Sw;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelAdminSol;
     private javax.swing.JLabel jLabelCerrarSesion;

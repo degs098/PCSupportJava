@@ -284,13 +284,18 @@ public class Hardware extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabelSolucionesMouseClicked
 
     private void PublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PublicarMouseClicked
-        String solicitud = jTextAreaCaso.getText();        
-        InsertarPublicacion(solicitud);
+        jLabelPublicarMouseClicked(evt);
     }//GEN-LAST:event_PublicarMouseClicked
           
     private void jLabelPublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPublicarMouseClicked
         String solicitud = jTextAreaCaso.getText();        
-        InsertarPublicacion(solicitud);
+        
+        if(!solicitud.isEmpty()){
+            InsertarPublicacion(solicitud);
+        }else{
+            JOptionPane.showMessageDialog(null, "No puedes enviar solicitudes vacias", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jLabelPublicarMouseClicked
     
     public void MostrarSoluciones(){
@@ -303,6 +308,7 @@ public class Hardware extends javax.swing.JPanel {
                     jTextAreaSoluciones.setText("SOLUCIONES: \n" + rs.getString(3));
                 }
             }
+            con.commit();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -318,13 +324,13 @@ public class Hardware extends javax.swing.JPanel {
             ps.execute();
             
             JOptionPane.showMessageDialog(null, "¡Tu solicitud ha sido enviada exitosamente al personal de soporte!","Solicitud enviada", JOptionPane.INFORMATION_MESSAGE);
-            con.close();
+            con.commit();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solicitud, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println(e.getMessage());
         }finally{
             try{
-                con.close();
+                con.commit();
             }catch(Exception es){
                 
             }
@@ -340,6 +346,7 @@ public class Hardware extends javax.swing.JPanel {
                 modeloLista.addElement("ID: " + rs.getString(1) + " " + "CASO: " + rs.getString(2) + " ");
                 jListCasos.setModel(modeloLista);
             }
+            con.commit();
         } catch (Exception e) {
             e.printStackTrace();
         }
