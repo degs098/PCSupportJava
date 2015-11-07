@@ -116,6 +116,12 @@ public class InicioAdministrador extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PC_SupportMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PC_SupportMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PC_SupportMouseExited(evt);
+            }
         });
 
         Hw.setName("Hw"); // NOI18N
@@ -254,6 +260,12 @@ public class InicioAdministrador extends javax.swing.JFrame {
         Logo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LogoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LogoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LogoMouseExited(evt);
             }
         });
 
@@ -732,6 +744,22 @@ public class InicioAdministrador extends javax.swing.JFrame {
         jLabelRegisUsu.setForeground(new java.awt.Color(0, 0, 0));
         setCursor(Cursor.DEFAULT_CURSOR);
     }//GEN-LAST:event_RegisUsuMouseExited
+
+    private void LogoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoMouseEntered
+        setCursor(Cursor.HAND_CURSOR);
+    }//GEN-LAST:event_LogoMouseEntered
+
+    private void LogoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoMouseExited
+        setCursor(Cursor.DEFAULT_CURSOR);
+    }//GEN-LAST:event_LogoMouseExited
+
+    private void PC_SupportMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC_SupportMouseEntered
+        setCursor(Cursor.HAND_CURSOR);
+    }//GEN-LAST:event_PC_SupportMouseEntered
+
+    private void PC_SupportMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC_SupportMouseExited
+        setCursor(Cursor.DEFAULT_CURSOR);
+    }//GEN-LAST:event_PC_SupportMouseExited
 
     /**
      * @param args the command line arguments
