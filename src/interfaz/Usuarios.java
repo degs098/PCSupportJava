@@ -291,6 +291,11 @@ public class Usuarios extends javax.swing.JPanel {
         jLabelClave.setText("Clave");
 
         jTableUsuarios.setModel(modeloLista);
+        jTableUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableUsuariosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableUsuarios);
 
         jComboBoxPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Soporte"}));
@@ -313,7 +318,7 @@ public class Usuarios extends javax.swing.JPanel {
                         .addGap(90, 90, 90)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 246, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabelUsuario)
@@ -553,6 +558,11 @@ public class Usuarios extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTextFieldNombreKeyTyped
 
+    private void jTableUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableUsuariosMouseClicked
+        // TODO add your handling code here:
+        BuscarPorIndice(jTableUsuarios.getSelectedRow());
+    }//GEN-LAST:event_jTableUsuariosMouseClicked
+
     public void Guardar(String usuario, String nombre, String clave, String perfil, String estado) {
         try {
             if (!usuario.equals("")) {
@@ -632,7 +642,33 @@ public class Usuarios extends javax.swing.JPanel {
                         cadena[x] = rs.getObject(x + 1).toString();
                     }
                 }
-                llenarCampos(cadena[0], cadena[1], cadena[2], cadena[3]);
+                llenarCampos(cadena[0], cadena[1], cadena[3], cadena[4]);
+            } else {
+                JOptionPane.showMessageDialog(null, "Hubo un error , porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    public void BuscarPorIndice(int fila) {
+        try {
+            if (fila >= 0) {
+
+                PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLUSUARIO WHERE USUARIO='" + modeloLista.getValueAt(fila, 0) + "'");;
+                ResultSet rs = ps.executeQuery();
+                String cadena[] = new String[5];
+
+                while (rs.next()) {
+                    cadena = new String[5];
+                    for (int x = 0; x < 5; ++x) {
+                        cadena[x] = rs.getObject(x + 1).toString();
+                    }
+                }
+                llenarCampos(cadena[0], cadena[1], cadena[3], cadena[4]);
             } else {
                 JOptionPane.showMessageDialog(null, "Hubo un error , porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -683,10 +719,9 @@ public class Usuarios extends javax.swing.JPanel {
         jTextFieldUsuario.setText(usuario);
         jTextFieldNombre.setText(nombre);
 
-
-        if (perfil.equals("Administrador")) {
+        if (perfil.equals("administrador")) {
             i = 0;
-        } else if (perfil.equals("Soporte")) {
+        } else if (perfil.equals("soporte")) {
             i = 1;
         }
 
