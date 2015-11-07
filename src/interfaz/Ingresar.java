@@ -294,7 +294,6 @@ public class Ingresar extends javax.swing.JPanel {
     private void jLabelCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCancelarMouseExited
         CancelarMouseExited(evt);
     }//GEN-LAST:event_jLabelCancelarMouseExited
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Aceptar;
     private javax.swing.JPanel Cancelar;
