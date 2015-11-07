@@ -21,7 +21,7 @@ public class Software extends javax.swing.JPanel {
      */
     private DefaultListModel modeloLista = new DefaultListModel();
     Connection con = new conexion().getCon();
-    
+
     public Software() {
         initComponents();
         jTCaso.setLineWrap(true);     //Para que haga un salto de linea en cualquier parte de la palabra
@@ -223,7 +223,11 @@ public class Software extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelSolucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSolucionMouseClicked
+        if(jListCasos.getSelectedIndex()>=0){
         MostrarSoluciones();
+        }else{
+        JOptionPane.showMessageDialog(null,"Selecciona un caso");
+        }
     }//GEN-LAST:event_jLabelSolucionMouseClicked
 
     private void SolucionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SolucionesMouseEntered
@@ -239,7 +243,11 @@ public class Software extends javax.swing.JPanel {
     }//GEN-LAST:event_SolucionesMouseExited
 
     private void SolucionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SolucionesMouseClicked
-        MostrarSoluciones();        
+        if(jListCasos.getSelectedIndex()>=0){
+        MostrarSoluciones();
+        }else{
+        JOptionPane.showMessageDialog(null,"Selecciona un caso");
+        }
     }//GEN-LAST:event_SolucionesMouseClicked
 
     private void jLabelSolucionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSolucionMouseEntered
@@ -280,12 +288,12 @@ public class Software extends javax.swing.JPanel {
 
     private void PublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PublicarMouseClicked
         String solicitud = jTCaso.getText();
-        InsertarPublicacion(solicitud);        
+        InsertarPublicacion(solicitud);
     }//GEN-LAST:event_PublicarMouseClicked
 
     private void jLabelPublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPublicarMouseClicked
         String solicitud = jTCaso.getText();
-        InsertarPublicacion(solicitud);    
+        InsertarPublicacion(solicitud);
     }//GEN-LAST:event_jLabelPublicarMouseClicked
     public void llenarLista() {
         try {
@@ -300,8 +308,8 @@ public class Software extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
-    
-    public void MostrarSoluciones(){
+
+    public void MostrarSoluciones() {
         try {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLCASOS_SW");
             ResultSet rs = ps.executeQuery();
@@ -309,36 +317,39 @@ public class Software extends javax.swing.JPanel {
             while (rs.next()) {
                 if (rs.getRow() == jListCasos.getSelectedIndex() + 1) {
                     jTSoluciones.setText("SOLUCIONES: \n" + rs.getString(3));
+                } else {
+
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void InsertarPublicacion(String solicitud){                
-        
-        try{
+
+    public void InsertarPublicacion(String solicitud) {
+
+        try {
             PreparedStatement ps = con.prepareStatement("INSERT INTO TBLSOLICITUD_CASOS VALUES (incremental_soli.nextval, ?,?)");
-            
+
             ps.setString(1, solicitud);
             ps.setString(2, "Software");
             ps.execute();
-            
-            JOptionPane.showMessageDialog(null, "¡Tu solicitud ha sido enviada exitosamente al personal de soporte!","Solicitud enviada", JOptionPane.INFORMATION_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "¡Tu solicitud ha sido enviada exitosamente al personal de soporte!", "Solicitud enviada", JOptionPane.INFORMATION_MESSAGE);
             con.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solicitud, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println(e.getMessage());
-        }finally{
-            try{
+        } finally {
+            try {
                 con.close();
-            }catch(Exception es){
-                
+            } catch (Exception es) {
+
             }
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Publicar;
     private javax.swing.JPanel Soluciones;

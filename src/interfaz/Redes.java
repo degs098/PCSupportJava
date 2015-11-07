@@ -274,11 +274,19 @@ public class Redes extends javax.swing.JPanel {
     }//GEN-LAST:event_SolucionesMouseExited
 
     private void SolucionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SolucionesMouseClicked
+        if(jListCasos.getSelectedIndex()>=0){
         MostrarSoluciones();
+        }else{
+        JOptionPane.showMessageDialog(null,"Selecciona un caso");
+        }
     }//GEN-LAST:event_SolucionesMouseClicked
 
     private void jLabelSolucionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSolucionesMouseClicked
+        if(jListCasos.getSelectedIndex()>=0){
         MostrarSoluciones();
+        }else{
+        JOptionPane.showMessageDialog(null,"Selecciona un caso");
+        }
     }//GEN-LAST:event_jLabelSolucionesMouseClicked
 
     private void PublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PublicarMouseClicked

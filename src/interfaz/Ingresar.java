@@ -224,7 +224,7 @@ public class Ingresar extends javax.swing.JPanel {
         setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         Aceptar.setBorder(BorderFactory.createLineBorder(Color.white));
 
-        
+
     }//GEN-LAST:event_AceptarMouseExited
 
     private void CancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseEntered
@@ -232,7 +232,7 @@ public class Ingresar extends javax.swing.JPanel {
         jLabelCancelar.setForeground(Color.black);
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         Cancelar.setBorder(BorderFactory.createLineBorder(Color.black));
-        
+
     }//GEN-LAST:event_CancelarMouseEntered
 
     private void CancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseExited
@@ -256,22 +256,23 @@ public class Ingresar extends javax.swing.JPanel {
         Usuario u = new Usuario();
 
         u = un.validarIngreso(user, pwd);
-        
+
         if (user.length() == 0 || pwd.length() == 0) {
             JOptionPane.showMessageDialog(null, "Clave y/o usuario vacios", "Error", 0);
         } else {
 
-            if (u.getUsuario() != "0") {
-                    if(u.getPerfil().equals("Administrador")){
+            if (u.getNombre()!= null) {
+                if (u.getPerfil().equals("Administrador")) {
                     ((java.awt.Window) getRootPane().getParent()).dispose();
                     InicioAdministrador ia = new InicioAdministrador();
                     ia.setVisible(true);
-                }else{
+                } else {
                     ((java.awt.Window) getRootPane().getParent()).dispose();
                     InicioSoporte is = new InicioSoporte();
                     is.setVisible(true);
                 }
             } else {
+                JOptionPane.showMessageDialog(null, "Clave y/o usuario incorrectos");
                 this.setVisible(true);
 
             }
@@ -307,5 +308,5 @@ public class Ingresar extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtClave;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
-     
+
 }

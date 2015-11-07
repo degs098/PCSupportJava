@@ -719,9 +719,9 @@ public class Usuarios extends javax.swing.JPanel {
         jTextFieldUsuario.setText(usuario);
         jTextFieldNombre.setText(nombre);
 
-        if (perfil.equals("administrador")) {
+        if (perfil.equals("Administrador")) {
             i = 0;
-        } else if (perfil.equals("soporte")) {
+        } else if (perfil.equals("Soporte")) {
             i = 1;
         }
 
