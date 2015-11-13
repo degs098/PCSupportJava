@@ -26,7 +26,7 @@ public class ErrorLogin extends javax.swing.JDialog {
     private JLabel jlmensaje;
     private FondoGris fondoGris;    
 
-    public ErrorLogin(java.awt.Frame parent, boolean modal) {
+    public ErrorLogin(java.awt.Frame parent, boolean modal, String mensaje) {
         super(parent, modal);
         ancho = (int) super.getToolkit().getScreenSize().getWidth();
         setPreferredSize(getPreferredSize());
@@ -43,7 +43,7 @@ public class ErrorLogin extends javax.swing.JDialog {
         jlerror.setBounds(400, 35, 128, 128);                             
         this.add(jlerror);
                 
-        jlmensaje = new JLabel("El Usuario y/o la Clave son incorrectos");
+        jlmensaje = new JLabel(mensaje);
         jlmensaje.setBounds(550, 70, 500, 25);
         jlmensaje.setForeground(Color.WHITE);
         jlmensaje.setFont(new Font("Segoe UI", Font.BOLD, 18));
@@ -177,7 +177,7 @@ public class ErrorLogin extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ErrorLogin dialog = new ErrorLogin(new javax.swing.JFrame(), true);
+                ErrorLogin dialog = new ErrorLogin(new javax.swing.JFrame(), true, "");
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -12,8 +12,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import mensajes.ErrorLogin;
-import mensajes.ErrorLoginCampos;
-import mensajes.ErrorLoginEstado;
 import negocios.UsuarioN;
 import static persistencia.SQLHelper.getValidarIngreso;
 
@@ -25,10 +23,8 @@ public class Ingresar extends javax.swing.JPanel {
 
     /**
      * Creates new form Software,
-     */
-    ErrorLoginCampos errorLoginCampos;
+     */    
     ErrorLogin errorLogin;
-    ErrorLoginEstado errorLoginEstado;
 
     public Ingresar() {
         initComponents();
@@ -266,15 +262,15 @@ public class Ingresar extends javax.swing.JPanel {
         u = un.validarIngreso(user, pwd);
 
         if (user.length() == 0 || pwd.length() == 0) {
-            errorLoginCampos = new ErrorLoginCampos((JFrame) getRootPane().getParent(), true);
-            errorLoginCampos.setVisible(true);
+            errorLogin= new ErrorLogin((JFrame) getRootPane().getParent(), true, "Los campos de Usuario y Clave están vacios");
+            errorLogin.setVisible(true);
 
         } else {
 
             if (u.getNombre() != null) {
                 if (u.getEstado().equals("Inactivo")) {
-                    errorLoginEstado = new ErrorLoginEstado((JFrame) getRootPane().getParent(), true);
-                    errorLoginEstado.setVisible(true);
+                    errorLogin= new ErrorLogin((JFrame) getRootPane().getParent(), true, "La cuenta de usuario se encuentra Inactiva");
+                    errorLogin.setVisible(true);
                 } else {
                     if (u.getPerfil().equals("Administrador")) {
                         ((java.awt.Window) getRootPane().getParent()).dispose();
@@ -287,7 +283,7 @@ public class Ingresar extends javax.swing.JPanel {
                     }
                 }
             } else {
-                errorLogin = new ErrorLogin((JFrame) getRootPane().getParent(), true);
+                errorLogin = new ErrorLogin((JFrame) getRootPane().getParent(), true, "El Usuario y/o la Clave son incorrectos");
                 errorLogin.setVisible(true);
                 this.setVisible(true);
 
