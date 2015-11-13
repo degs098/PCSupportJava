@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import mensajes.ErrorLogin;
+import mensajes.ErrorLoginCampos;
+import mensajes.ErrorLoginEstado;
 import negocios.UsuarioN;
 import static persistencia.SQLHelper.getValidarIngreso;
 
@@ -23,6 +26,10 @@ public class Ingresar extends javax.swing.JPanel {
     /**
      * Creates new form Software,
      */
+    ErrorLoginCampos errorLoginCampos;
+    ErrorLogin errorLogin;
+    ErrorLoginEstado errorLoginEstado;
+
     public Ingresar() {
         initComponents();
     }
@@ -253,26 +260,35 @@ public class Ingresar extends javax.swing.JPanel {
         String user = txtUsuario.getText();
         String pwd = txtClave.getText();
         UsuarioN un = new UsuarioN();
-        Usuario u = new Usuario();
+        Usuario u;
+
 
         u = un.validarIngreso(user, pwd);
 
         if (user.length() == 0 || pwd.length() == 0) {
-            JOptionPane.showMessageDialog(null, "Clave y/o usuario vacios", "Error", 0);
+            errorLoginCampos = new ErrorLoginCampos((JFrame) getRootPane().getParent(), true);
+            errorLoginCampos.setVisible(true);
+
         } else {
 
-            if (u.getNombre()!= null) {
-                if (u.getPerfil().equals("Administrador")) {
-                    ((java.awt.Window) getRootPane().getParent()).dispose();
-                    InicioAdministrador ia = new InicioAdministrador();
-                    ia.setVisible(true);
+            if (u.getNombre() != null) {
+                if (u.getEstado().equals("Inactivo")) {
+                    errorLoginEstado = new ErrorLoginEstado((JFrame) getRootPane().getParent(), true);
+                    errorLoginEstado.setVisible(true);
                 } else {
-                    ((java.awt.Window) getRootPane().getParent()).dispose();
-                    InicioSoporte is = new InicioSoporte();
-                    is.setVisible(true);
+                    if (u.getPerfil().equals("Administrador")) {
+                        ((java.awt.Window) getRootPane().getParent()).dispose();
+                        InicioAdministrador ia = new InicioAdministrador();
+                        ia.setVisible(true);
+                    } else {
+                        ((java.awt.Window) getRootPane().getParent()).dispose();
+                        InicioSoporte is = new InicioSoporte();
+                        is.setVisible(true);
+                    }
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Clave y/o usuario incorrectos");
+                errorLogin = new ErrorLogin((JFrame) getRootPane().getParent(), true);
+                errorLogin.setVisible(true);
                 this.setVisible(true);
 
             }
@@ -307,5 +323,4 @@ public class Ingresar extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtClave;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
-
 }
