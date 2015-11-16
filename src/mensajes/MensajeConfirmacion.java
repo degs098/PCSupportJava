@@ -17,43 +17,47 @@ import javax.swing.JLabel;
  *
  * @author samsung
  */
-public class ErrorLogin extends javax.swing.JDialog {
+public class MensajeConfirmacion extends javax.swing.JDialog {
 
     private int ancho;
     private Dimension dim;
-    private String ruta = "/imagenes/";    
+    private String ruta = "/imagenes/";
     private JLabel jlerror;
     private JLabel jlmensaje;
-    private FondoGris fondoGris;    
+    private FondoGris fondoGris;
 
-    public ErrorLogin(java.awt.Frame parent, boolean modal, String mensaje) {
+    public MensajeConfirmacion(java.awt.Frame parent, boolean modal, String mensaje, int tipo) {
         super(parent, modal);
         ancho = (int) super.getToolkit().getScreenSize().getWidth();
         setPreferredSize(getPreferredSize());
         setSize(getPreferredSize());
         setLocationRelativeTo(null);
-        super.getContentPane().setBackground(new Color(0,106,193));               
-        
+        super.getContentPane().setBackground(new Color(0, 106, 193));
+
         fondoGris = new FondoGris();
         fondoGris.setVisible(true);
-        
-        ImageIcon  errorIcon = new ImageIcon(getClass().getResource(ruta + "notification_error.png"));
 
-        jlerror = new JLabel(errorIcon); 
-        jlerror.setBounds(400, 35, 128, 128);                             
-        this.add(jlerror);
-                
+        if (tipo == 0) {
+            ImageIcon errorIcon = new ImageIcon(getClass().getResource(ruta + "notification_error.png"));
+            jlerror = new JLabel(errorIcon);
+            jlerror.setBounds(400, 35, 128, 128);
+            this.add(jlerror);
+        } else if (tipo == 1) {
+            ImageIcon alertIcon = new ImageIcon(getClass().getResource(ruta + "notification_alert.png"));
+            jlerror = new JLabel(alertIcon);
+            jlerror.setBounds(400, 35, 128, 128);
+            this.add(jlerror);
+        }
+
         jlmensaje = new JLabel(mensaje);
         jlmensaje.setBounds(550, 70, 500, 25);
         jlmensaje.setForeground(Color.WHITE);
         jlmensaje.setFont(new Font("Segoe UI", Font.BOLD, 18));
         this.add(jlmensaje);
-        
+
         initComponents();
-                
     }
-        
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,6 +69,8 @@ public class ErrorLogin extends javax.swing.JDialog {
 
         Aceptar = new javax.swing.JPanel();
         jLabelAceptar = new javax.swing.JLabel();
+        Cancelar = new javax.swing.JPanel();
+        jLabelCancelar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -75,11 +81,11 @@ public class ErrorLogin extends javax.swing.JDialog {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AceptarMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AceptarMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 AceptarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AceptarMouseEntered(evt);
             }
         });
 
@@ -104,21 +110,60 @@ public class ErrorLogin extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        Cancelar.setBackground(new java.awt.Color(0, 106, 193));
+        Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CancelarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CancelarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CancelarMouseEntered(evt);
+            }
+        });
+
+        jLabelCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCancelar.setText("Cancelar");
+
+        javax.swing.GroupLayout CancelarLayout = new javax.swing.GroupLayout(Cancelar);
+        Cancelar.setLayout(CancelarLayout);
+        CancelarLayout.setHorizontalGroup(
+            CancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CancelarLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jLabelCancelar)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+        CancelarLayout.setVerticalGroup(
+            CancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CancelarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelCancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(570, Short.MAX_VALUE)
+                .addContainerGap(484, Short.MAX_VALUE)
                 .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(557, 557, 557))
+                .addGap(58, 58, 58)
+                .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(400, 400, 400))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(201, Short.MAX_VALUE)
-                .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
+                .addContainerGap(212, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
         );
 
         pack();
@@ -140,12 +185,32 @@ public class ErrorLogin extends javax.swing.JDialog {
     }//GEN-LAST:event_AceptarMouseExited
 
     private void AceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AceptarMouseClicked
-                       
-        if(fondoGris.isVisible()){
+
+        System.exit(0);
+
+
+    }//GEN-LAST:event_AceptarMouseClicked
+
+    private void CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseClicked
+        if (fondoGris.isVisible()) {
             fondoGris.dispose();
         }
         this.dispose();
-    }//GEN-LAST:event_AceptarMouseClicked
+    }//GEN-LAST:event_CancelarMouseClicked
+
+    private void CancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseEntered
+        Cancelar.setBackground(new java.awt.Color(244, 244, 244));
+        jLabelCancelar.setForeground(Color.black);
+        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        Cancelar.setBorder(BorderFactory.createLineBorder(Color.black));
+    }//GEN-LAST:event_CancelarMouseEntered
+
+    private void CancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseExited
+        Cancelar.setBackground(new java.awt.Color(0, 106, 193));
+        jLabelCancelar.setForeground(Color.white);
+        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+        Cancelar.setBorder(BorderFactory.createLineBorder(Color.white));
+    }//GEN-LAST:event_CancelarMouseExited
 
     /**
      * @param args the command line arguments
@@ -164,20 +229,23 @@ public class ErrorLogin extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ErrorLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MensajeConfirmacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ErrorLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MensajeConfirmacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ErrorLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MensajeConfirmacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ErrorLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MensajeConfirmacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ErrorLogin dialog = new ErrorLogin(new javax.swing.JFrame(), true, "");
+                MensajeConfirmacion dialog = new MensajeConfirmacion(new javax.swing.JFrame(), true, "", 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -187,17 +255,19 @@ public class ErrorLogin extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
-                
+
     }
 
     @Override
     public final Dimension getPreferredSize() {
         return new Dimension(ancho, 210);
     }
-        
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Aceptar;
+    private javax.swing.JPanel Cancelar;
     private javax.swing.JLabel jLabelAceptar;
+    private javax.swing.JLabel jLabelCancelar;
     // End of variables declaration//GEN-END:variables
 }

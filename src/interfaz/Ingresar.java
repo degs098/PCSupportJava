@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import mensajes.ErrorLogin;
+import mensajes.Mensaje;
 import negocios.UsuarioN;
 import static persistencia.SQLHelper.getValidarIngreso;
 
@@ -24,7 +24,7 @@ public class Ingresar extends javax.swing.JPanel {
     /**
      * Creates new form Software,
      */    
-    ErrorLogin errorLogin;
+    Mensaje errorLogin;
 
     public Ingresar() {
         initComponents();
@@ -262,14 +262,14 @@ public class Ingresar extends javax.swing.JPanel {
         u = un.validarIngreso(user, pwd);
 
         if (user.length() == 0 || pwd.length() == 0) {
-            errorLogin= new ErrorLogin((JFrame) getRootPane().getParent(), true, "Los campos de Usuario y Clave están vacios");
+            errorLogin= new Mensaje((JFrame) getRootPane().getParent(), true, "Los campos de Usuario y Clave están vacios",0);
             errorLogin.setVisible(true);
 
         } else {
 
             if (u.getNombre() != null) {
                 if (u.getEstado().equals("Inactivo")) {
-                    errorLogin= new ErrorLogin((JFrame) getRootPane().getParent(), true, "La cuenta de usuario se encuentra Inactiva");
+                    errorLogin= new Mensaje((JFrame) getRootPane().getParent(), true, "La cuenta de usuario se encuentra Inactiva",0);
                     errorLogin.setVisible(true);
                 } else {
                     if (u.getPerfil().equals("Administrador")) {
@@ -283,7 +283,7 @@ public class Ingresar extends javax.swing.JPanel {
                     }
                 }
             } else {
-                errorLogin = new ErrorLogin((JFrame) getRootPane().getParent(), true, "El Usuario y/o la Clave son incorrectos");
+                errorLogin = new Mensaje((JFrame) getRootPane().getParent(), true, "El Usuario y/o la Clave son incorrectos",0);
                 errorLogin.setVisible(true);
                 this.setVisible(true);
 

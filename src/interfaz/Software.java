@@ -11,7 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import mensajes.Mensaje;
 import persistencia.SQLHelperSoftware;
 
 public class Software extends javax.swing.JPanel {
@@ -19,6 +21,8 @@ public class Software extends javax.swing.JPanel {
     /**
      * Creates new form Software
      */
+    Mensaje mesaje;
+
     private DefaultListModel modeloLista = new DefaultListModel();
     Connection con = new conexion().getCon();
 
@@ -223,10 +227,11 @@ public class Software extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelSolucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSolucionMouseClicked
-        if(jListCasos.getSelectedIndex()>=0){
-        MostrarSoluciones();
-        }else{
-        JOptionPane.showMessageDialog(null,"Selecciona un caso");
+        if (jListCasos.getSelectedIndex() >= 0) {
+            MostrarSoluciones();
+        } else {
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Selecciona un caso", 1);
+            mesaje.setVisible(true);
         }
     }//GEN-LAST:event_jLabelSolucionMouseClicked
 
@@ -243,10 +248,11 @@ public class Software extends javax.swing.JPanel {
     }//GEN-LAST:event_SolucionesMouseExited
 
     private void SolucionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SolucionesMouseClicked
-        if(jListCasos.getSelectedIndex()>=0){
-        MostrarSoluciones();
-        }else{
-        JOptionPane.showMessageDialog(null,"Selecciona un caso");
+        if (jListCasos.getSelectedIndex() >= 0) {
+            MostrarSoluciones();
+        } else {
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Selecciona un caso", 1);
+            mesaje.setVisible(true);
         }
     }//GEN-LAST:event_SolucionesMouseClicked
 
@@ -336,14 +342,18 @@ public class Software extends javax.swing.JPanel {
             ps.setString(2, "Software");
             ps.execute();
 
-            JOptionPane.showMessageDialog(null, "¡Tu solicitud ha sido enviada exitosamente al personal de soporte!", "Solicitud enviada", JOptionPane.INFORMATION_MESSAGE);
-            con.close();
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "¡Tu solicitud ha sido enviada exitosamente al personal de soporte!", 2);
+            mesaje.setVisible(true);
+            con.commit();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solicitud, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de la solicitud, porfavor vuelve a intentarlo", 0);
+            mesaje.setVisible(true);
+            
             System.out.println(e.getMessage());
         } finally {
             try {
-                con.close();
+                con.commit();
             } catch (Exception es) {
 
             }

@@ -12,7 +12,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import mensajes.Mensaje;
 import persistencia.SQLHelperSistemaOperativo;
 
 /**
@@ -24,6 +26,8 @@ public class SistemaOperativo extends javax.swing.JPanel {
     /**
      * Creates new form Sistema Operativo
      */
+    Mensaje mesaje;
+
     private DefaultListModel modeloLista = new DefaultListModel();
     Connection con = new conexion().getCon();
 
@@ -275,32 +279,34 @@ public class SistemaOperativo extends javax.swing.JPanel {
     }//GEN-LAST:event_SolucionesMouseExited
 
     private void SolucionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SolucionesMouseClicked
-        if(jListCasos.getSelectedIndex()>=0){
-        MostrarSoluciones();
-        }else{
-        JOptionPane.showMessageDialog(null,"Selecciona un caso");
+        if (jListCasos.getSelectedIndex() >= 0) {
+            MostrarSoluciones();
+        } else {
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Selecciona un caso", 1);
+            mesaje.setVisible(true);
         }
     }//GEN-LAST:event_SolucionesMouseClicked
 
     private void jLabelSolucionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSolucionesMouseClicked
-        if(jListCasos.getSelectedIndex()>=0){
-        MostrarSoluciones();
-        }else{
-        JOptionPane.showMessageDialog(null,"Selecciona un caso");
+        if (jListCasos.getSelectedIndex() >= 0) {
+            MostrarSoluciones();
+        } else {
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Selecciona un caso", 1);
+            mesaje.setVisible(true);
         }
     }//GEN-LAST:event_jLabelSolucionesMouseClicked
 
     private void PublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PublicarMouseClicked
-        String solicitud = jTextAreaCaso.getText();        
+        String solicitud = jTextAreaCaso.getText();
         InsertarPublicacion(solicitud);
     }//GEN-LAST:event_PublicarMouseClicked
-          
+
     private void jLabelPublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPublicarMouseClicked
-        String solicitud = jTextAreaCaso.getText();        
+        String solicitud = jTextAreaCaso.getText();
         InsertarPublicacion(solicitud);
     }//GEN-LAST:event_jLabelPublicarMouseClicked
-    
-    public void MostrarSoluciones(){
+
+    public void MostrarSoluciones() {
         try {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLCASOS_SO");
             ResultSet rs = ps.executeQuery();
@@ -314,30 +320,33 @@ public class SistemaOperativo extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
-    
-    public void InsertarPublicacion(String solicitud){                
-        
-        try{
+
+    public void InsertarPublicacion(String solicitud) {
+
+        try {
             PreparedStatement ps = con.prepareStatement("INSERT INTO TBLSOLICITUD_CASOS VALUES (incremental_soli.nextval, ?,?)");
-            
+
             ps.setString(1, solicitud);
             ps.setString(2, "Sistema Operativo");
             ps.execute();
-            
-            JOptionPane.showMessageDialog(null, "¡Tu solicitud ha sido enviada exitosamente al personal de soporte!","Solicitud enviada", JOptionPane.INFORMATION_MESSAGE);
-            con.close();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solicitud, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "¡Tu solicitud ha sido enviada exitosamente al personal de soporte!", 2);
+            mesaje.setVisible(true);
+
+            con.commit();
+        } catch (Exception e) {
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de la solicitud, porfavor vuelve a intentarlo", 0);
+            mesaje.setVisible(true);
+
             System.out.println(e.getMessage());
-        }finally{
-            try{
-                con.close();
-            }catch(Exception es){
-                
+        } finally {
+            try {
+               con.commit();
+            } catch (Exception es) {
+
             }
         }
     }
-    
+
     public void llenarLista() {
         try {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM TBLCASOS_SO");
@@ -351,7 +360,7 @@ public class SistemaOperativo extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Publicar;
     private javax.swing.JPanel Soluciones;

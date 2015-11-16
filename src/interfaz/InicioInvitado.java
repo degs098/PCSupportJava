@@ -8,7 +8,9 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import mensajes.MensajeConfirmacion;
 
 /**
  *
@@ -28,6 +30,8 @@ public class InicioInvitado extends javax.swing.JFrame {
     Ingresar lg = new Ingresar();
     Bienvenida B = new Bienvenida();
     Usuarios U = new Usuarios();
+    
+    MensajeConfirmacion men;
    
     public InicioInvitado() {
         initComponents();
@@ -468,11 +472,9 @@ public class InicioInvitado extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirMouseExited
 
     private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
-        int confirmar = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea cerrar la aplicación?", "Salir", JOptionPane.YES_NO_OPTION, 0);
-
-        if (JOptionPane.YES_OPTION == confirmar) {
-            System.exit(0);
-        }
+        
+        men =new MensajeConfirmacion((JFrame) getRootPane().getParent(), true, "¿Está seguro que desea cerrar la aplicación?", 0);
+        men.setVisible(true);       
     }//GEN-LAST:event_SalirMouseClicked
 
     private void LoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseEntered

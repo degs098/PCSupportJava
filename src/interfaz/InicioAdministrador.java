@@ -13,7 +13,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import mensajes.MensajeConfirmacion;
 
 /**
  *
@@ -34,6 +36,8 @@ public class InicioAdministrador extends javax.swing.JFrame {
     Usuarios U = new Usuarios();
     Administracion A = new Administracion();
     Connection con = new conexion().getCon();
+    
+    MensajeConfirmacion men;
    
     public InicioAdministrador() {
         initComponents();
@@ -551,11 +555,8 @@ public class InicioAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirMouseExited
 
     private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
-        int confirmar = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea cerrar la aplicación?", "Salir", JOptionPane.YES_NO_OPTION, 0);
-
-        if (JOptionPane.YES_OPTION == confirmar) {
-            System.exit(0);
-        }
+        men =new MensajeConfirmacion((JFrame) getRootPane().getParent(), true, "¿Está seguro que desea cerrar la aplicación?", 0);
+        men.setVisible(true);
     }//GEN-LAST:event_SalirMouseClicked
 
     private void SwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SwMouseClicked
