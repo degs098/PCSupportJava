@@ -298,12 +298,22 @@ public class SistemaOperativo extends javax.swing.JPanel {
 
     private void PublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PublicarMouseClicked
         String solicitud = jTextAreaCaso.getText();
-        InsertarPublicacion(solicitud);
+        if(solicitud.isEmpty()){
+                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "No puedes enviar solicitudes vacias", 0);                
+                mesaje.setVisible(true);
+        }else{
+            InsertarPublicacion(solicitud);
+        }
     }//GEN-LAST:event_PublicarMouseClicked
 
     private void jLabelPublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPublicarMouseClicked
         String solicitud = jTextAreaCaso.getText();
-        InsertarPublicacion(solicitud);
+        if(solicitud.isEmpty()){
+                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "No puedes enviar solicitudes vacias", 0);                
+                mesaje.setVisible(true);
+        }else{
+            InsertarPublicacion(solicitud);
+        }
     }//GEN-LAST:event_jLabelPublicarMouseClicked
 
     public void MostrarSoluciones() {

@@ -299,7 +299,12 @@ public class Software extends javax.swing.JPanel {
 
     private void jLabelPublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPublicarMouseClicked
         String solicitud = jTCaso.getText();
-        InsertarPublicacion(solicitud);
+        if(solicitud.isEmpty()){
+                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "No puedes enviar solicitudes vacias", 0);                
+                mesaje.setVisible(true);
+        }else{
+            InsertarPublicacion(solicitud);
+        }
     }//GEN-LAST:event_jLabelPublicarMouseClicked
     public void llenarLista() {
         try {
@@ -337,15 +342,18 @@ public class Software extends javax.swing.JPanel {
 
         try {
             PreparedStatement ps = con.prepareStatement("INSERT INTO TBLSOLICITUD_CASOS VALUES (incremental_soli.nextval, ?,?)");
-
-            ps.setString(1, solicitud);
-            ps.setString(2, "Software");
-            ps.execute();
-
-            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "¡Tu solicitud ha sido enviada exitosamente al personal de soporte!", 2);
-            mesaje.setVisible(true);
-            con.commit();
+            
+            
+                ps.setString(1, solicitud);
+                ps.setString(2, "Software");
+                ps.execute();
+                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "¡Tu solicitud ha sido enviada exitosamente al personal de soporte!", 2);
+                mesaje.setVisible(true);
+                con.commit();            
+            
         } catch (Exception e) {
+            
+            
 
             mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de la solicitud, porfavor vuelve a intentarlo", 0);
             mesaje.setVisible(true);

@@ -15,8 +15,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.io.*;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import mensajes.Mensaje;
+import mensajes.MensajeInput;
 
 /**
  *
@@ -28,6 +31,8 @@ public class Usuarios extends javax.swing.JPanel {
      * Creates new form Administracion
      */
     DefaultTableModel modeloLista;
+    Mensaje mesaje;
+    MensajeInput mi;
     Connection con = new conexion().getCon();
     int Seleccion = -1;
 
@@ -435,21 +440,25 @@ public class Usuarios extends javax.swing.JPanel {
         String psw = jPasswordFieldclave.getText();
 
         if (usuario.length() == 0) {
-            JOptionPane.showMessageDialog(null, "Campo de usuario vacío", "Error", 0);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "El campo de Usuario está vacío", 0);
+            mesaje.setVisible(true);
         } else {
             int limite = 8;
             if (usuario.length() >= limite) {
                 evt.consume();
                 if (nombre.length() == 0) {
-                    JOptionPane.showMessageDialog(null, "Campo de nombre vacío ", "Error", 0);
+                    mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "El campo de Nombre está vacío", 0);
+                    mesaje.setVisible(true);
                 } else {
                     if (psw.length() == 0) {
-                        JOptionPane.showMessageDialog(null, "Campo de clave vacía", "Error", 0);
+                        mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "El campo de Clave está vacío", 0);
+                        mesaje.setVisible(true);
                     } else {
                         if (psw.length() >= limite) {
                             evt.consume();
                             if (nombre.equals(psw)) {
-                                JOptionPane.showMessageDialog(null, "La clave no puede ser el nombre", "Error", 0);
+                                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Procura que la Clave no sea igual al Nombre", 0);
+                                mesaje.setVisible(true);
                             } else {
                                 Guardar(jTextFieldUsuario.getText(), jTextFieldNombre.getText(), jPasswordFieldclave.getText(), (String) jComboBoxPerfil.getSelectedItem(), (String) jComboBoxEstado.getSelectedItem());
                                 jTextFieldID1.setText("");
@@ -458,12 +467,14 @@ public class Usuarios extends javax.swing.JPanel {
                                 jPasswordFieldclave.setText("");
                             }
                         } else {
-                            JOptionPane.showMessageDialog(null, "La clave debe contener mínimo 8 caracteres", "Error", 0);
+                            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "La clave debe de tener mínimo 8 caracteres", 0);
+                            mesaje.setVisible(true);
                         }
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "El usuario debe contener mínimo 8 caracteres", "Error", 0);
+                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "El Usuario debe contener como mínimo 8 caracteres", 0);
+                mesaje.setVisible(true);
             }
         }
     }//GEN-LAST:event_jLabelGuardarMouseClicked
@@ -473,10 +484,15 @@ public class Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanelGuardarMouseClicked
 
     private void jPanelEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelEliminarMouseClicked
-        String usuario = JOptionPane.showInputDialog(null, "Ingrese el nombre del usuario a eliminar");
+
+        mi = new MensajeInput((JFrame) getRootPane().getParent(), true, "Ingrese el nombre del usuario a eliminar");
+        mi.setVisible(true);
+
+        String usuario = mi.consultarUsuario();
 
         if (usuario.equals("")) {
-            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "No hay valor asignado", 0);
+            mesaje.setVisible(true);
         } else {
             Eliminar(usuario);
         }
@@ -484,10 +500,15 @@ public class Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanelEliminarMouseClicked
 
     private void jPanelBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBuscarMouseClicked
-        String usuario = JOptionPane.showInputDialog(null, "Ingrese el nombre del usuario a buscar");
+
+        mi = new MensajeInput((JFrame) getRootPane().getParent(), true, "Ingrese el nombre del usuario a buscar");
+        mi.setVisible(true);
+
+        String usuario = mi.consultarUsuario();
 
         if (usuario.equals("")) {
-            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "No hay valor asignado", 0);
+            mesaje.setVisible(true);
         } else {
             Buscar(usuario);
         }
@@ -571,16 +592,19 @@ public class Usuarios extends javax.swing.JPanel {
                         + "        ('" + usuario + "','" + nombre + "', '" + clave + "', '" + estado + "','" + perfil + "')");
                 ResultSet rs = ps.executeQuery();
             } else {
-                JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de los datos, \n por favor vuelve a intentarlo", 0);
+                mesaje.setVisible(true);
             }
 
-            JOptionPane.showMessageDialog(null, "¡Usuario guardado!", "Usuario guardado", JOptionPane.INFORMATION_MESSAGE);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Usuario almacenado exitosamente", 2);
+            mesaje.setVisible(true);
             vaciarTabla();
             llenarTabla();
             con.commit();
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de los datos, \n por favor vuelve a intentarlo", 0);
+            mesaje.setVisible(true);
         }
     }
 
@@ -594,16 +618,19 @@ public class Usuarios extends javax.swing.JPanel {
                         + " estado='" + estado + "', perfil='" + perfil + "'  where usuario='" + usuario + "'");
                 ResultSet rs = ps.executeQuery();
             } else {
-                JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de los datos, \n por favor vuelve a intentarlo", 0);
+                mesaje.setVisible(true);
             }
 
-            JOptionPane.showMessageDialog(null, "¡Usuario Actualizado!", "Usuario Actualizado", JOptionPane.INFORMATION_MESSAGE);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Usuario actualizado exitosamente", 2);
+            mesaje.setVisible(true);
             vaciarTabla();
             llenarTabla();
             con.commit();
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de los datos, \n por favor vuelve a intentarlo", 0);
+            mesaje.setVisible(true);
         }
     }//fin actualizar dato
 
@@ -614,16 +641,19 @@ public class Usuarios extends javax.swing.JPanel {
                 PreparedStatement ps = con.prepareStatement("DELETE FROM TBLUSUARIO WHERE USUARIO='" + usuario + "'");;
                 ResultSet rs = ps.executeQuery();
             } else {
-                JOptionPane.showMessageDialog(null, "Hubo un error , porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de los datos, \n por favor vuelve a intentarlo", 0);
+                mesaje.setVisible(true);
             }
 
-            JOptionPane.showMessageDialog(null, "¡Usuario Eliminado!", "Usuario Eliminado", JOptionPane.INFORMATION_MESSAGE);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Usuario eliminado exitosamente", 2);
+            mesaje.setVisible(true);
             vaciarTabla();
             llenarTabla();
             con.commit();
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de los datos, \n por favor vuelve a intentarlo", 0);
+            mesaje.setVisible(true);
         }
 
     }
@@ -644,12 +674,14 @@ public class Usuarios extends javax.swing.JPanel {
                 }
                 llenarCampos(cadena[0], cadena[1], cadena[3], cadena[4]);
             } else {
-                JOptionPane.showMessageDialog(null, "Hubo un error , porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "No hay valor asignado", 0);
+                mesaje.setVisible(true);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de los datos, \n por favor vuelve a intentarlo", 0);
+            mesaje.setVisible(true);
         }
 
     }
@@ -670,12 +702,14 @@ public class Usuarios extends javax.swing.JPanel {
                 }
                 llenarCampos(cadena[0], cadena[1], cadena[3], cadena[4]);
             } else {
-                JOptionPane.showMessageDialog(null, "Hubo un error , porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de los datos, \n por favor vuelve a intentarlo", 0);
+                mesaje.setVisible(true);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Hubo un error en el envío de los datos, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de los datos, \n por favor vuelve a intentarlo", 0);
+            mesaje.setVisible(true);
         }
 
     }

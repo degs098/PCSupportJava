@@ -262,9 +262,9 @@ public class Ingresar extends javax.swing.JPanel {
         u = un.validarIngreso(user, pwd);
 
         if (user.length() == 0 || pwd.length() == 0) {
-            errorLogin= new Mensaje((JFrame) getRootPane().getParent(), true, "Los campos de Usuario y Clave están vacios",0);
+            errorLogin= new Mensaje((JFrame) getRootPane().getParent(), true, "Los campos de Usuario y/o Clave están vacios",0);
             errorLogin.setVisible(true);
-
+            
         } else {
 
             if (u.getNombre() != null) {
