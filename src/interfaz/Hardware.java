@@ -343,7 +343,7 @@ public class Hardware extends javax.swing.JPanel {
             mesaje.setVisible(true);
             con.commit();
         } catch (Exception e) {
-            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de la solicitud, porfavor vuelve a intentarlo", 0);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de la solicitud, por favor vuelve a intentarlo", 0);
             mesaje.setVisible(true);
             
             System.out.println(e.getMessage());

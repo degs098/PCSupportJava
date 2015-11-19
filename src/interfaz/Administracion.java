@@ -11,8 +11,10 @@ import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import mensajes.Mensaje;
 
 /**
  *
@@ -23,6 +25,7 @@ public class Administracion extends javax.swing.JPanel {
     /**
      * Creates new form Administracion
      */
+    Mensaje mensaje;
     private DefaultListModel modeloLista = new DefaultListModel();
     Connection con = new conexion().getCon();    
 
@@ -390,10 +393,12 @@ public class Administracion extends javax.swing.JPanel {
 
     private void jLabelSeleccionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSeleccionarMouseClicked
         MostrarSoluciones();
+        
     }//GEN-LAST:event_jLabelSeleccionarMouseClicked
 
     private void jPanelSeleccionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSeleccionarMouseClicked
         MostrarSoluciones();
+        
     }//GEN-LAST:event_jPanelSeleccionarMouseClicked
 
     private void jPanelEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelEliminarMouseClicked
@@ -409,7 +414,14 @@ public class Administracion extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanelEliminarMouseClicked
 
     private void jPanelPublicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelPublicarMouseClicked
+        String Respuesta = jTextAreaRespuesta.getText();
+        
+        if (!Respuesta.isEmpty()){
         InsertarEnTabla(jTextFieldIDCaso.getText(), jTextAreaRespuesta.getText(), (String) jComboBoxTipos.getSelectedItem());
+        } else {
+            mensaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Debes de seleccionar una pregunta", 0);
+            mensaje.setVisible(true);
+        }
     }//GEN-LAST:event_jPanelPublicarMouseClicked
 
     private void jPanelCambiarTipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCambiarTipoMouseClicked
@@ -509,12 +521,20 @@ public class Administracion extends javax.swing.JPanel {
             }
 
             EliminarCaso(Integer.parseInt(jTextFieldID.getText()));
-
-            JOptionPane.showMessageDialog(null, "¡Solución de solicitud guardada!", "Solución enviada", JOptionPane.INFORMATION_MESSAGE);
-            con.commit();
+            
+            mensaje = new Mensaje((JFrame) getRootPane().getParent(), true, "¡Solución de solicitud guardada!", 2);
+            mensaje.setVisible(true);      
+            /*JOptionPane.showMessageDialog(null, "¡Solución de solicitud guardada!", "Solución enviada", JOptionPane.INFORMATION_MESSAGE);
+            */
+                con.commit();
         } catch (Exception e) {
+            mensaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Hubo un error en el envío de la solución, por favor vuelve a intentarlo", 0);
+            mensaje.setVisible(true);
+            System.out.println(e.getMessage());
+            /*System.out.println(e.getMessage());
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Hubo un error en el envío de la solución, porfavor vuelve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+                    */
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
