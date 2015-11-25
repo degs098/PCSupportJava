@@ -98,7 +98,6 @@ public class InicioInvitado extends javax.swing.JFrame {
         jLabelLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Inicio de invitados");
         setBackground(new java.awt.Color(255, 255, 255));
         setName("Principal"); // NOI18N
         setUndecorated(true);
