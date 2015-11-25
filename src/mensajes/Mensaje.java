@@ -55,7 +55,7 @@ public class Mensaje extends javax.swing.JDialog {
         }
 
         jlmensaje = new JLabel(mensaje);
-        jlmensaje.setBounds(550, 70, 500, 25);
+        jlmensaje.setBounds(540, 70, 600, 25);
         jlmensaje.setForeground(Color.WHITE);
         jlmensaje.setFont(new Font("Segoe UI", Font.BOLD, 18));
         this.add(jlmensaje);

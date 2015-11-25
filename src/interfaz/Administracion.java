@@ -402,12 +402,12 @@ public class Administracion extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanelSeleccionarMouseClicked
 
     private void jPanelEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelEliminarMouseClicked
-        
-        int idCaso = Integer.parseInt(jTextFieldID.getText());
-        
+                        
         if(jTextFieldIDCaso.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Selecciona un caso antes de eliminarlo, Para ello escoge un caso y presiona 'Seleccionar'", "Error", JOptionPane.ERROR_MESSAGE);
+            mensaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Selecciona un caso antes de eliminarlo", 1);
+            mensaje.setVisible(true);
         }else{
+            int idCaso = Integer.parseInt(jTextFieldID.getText());
             EliminarCaso(idCaso);
         }
                 
@@ -419,7 +419,7 @@ public class Administracion extends javax.swing.JPanel {
         if (!Respuesta.isEmpty()){
         InsertarEnTabla(jTextFieldIDCaso.getText(), jTextAreaRespuesta.getText(), (String) jComboBoxTipos.getSelectedItem());
         } else {
-            mensaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Debes de seleccionar una pregunta", 0);
+            mensaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Debes ingresar una respuesta", 0);
             mensaje.setVisible(true);
         }
     }//GEN-LAST:event_jPanelPublicarMouseClicked
