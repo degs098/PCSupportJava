@@ -274,7 +274,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("©2015 Politécnico Colombiano Jaime Isaza Cadavid");
+        jLabel3.setText("©2015 Sebastian Pernett, Daniel Gallego y Andres Serna.");
 
         So.setName("Hw"); // NOI18N
         So.addMouseListener(new java.awt.event.MouseAdapter() {
