@@ -107,6 +107,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
         jLabelCerrarSesion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio de Administración");
         setBackground(new java.awt.Color(255, 255, 255));
         setName("Principal"); // NOI18N
         setUndecorated(true);
