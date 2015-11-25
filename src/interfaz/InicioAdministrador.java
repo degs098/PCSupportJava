@@ -107,6 +107,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
         jLabelCerrarSesion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio de administración");
         setBackground(new java.awt.Color(255, 255, 255));
         setName("Principal"); // NOI18N
         setUndecorated(true);
@@ -151,7 +152,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             .addGroup(HwLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabelHardware)
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addContainerGap(303, Short.MAX_VALUE))
         );
         HwLayout.setVerticalGroup(
             HwLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,7 +218,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             .addGroup(RdLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabelRedes)
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addContainerGap(346, Short.MAX_VALUE))
         );
         RdLayout.setVerticalGroup(
             RdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,7 +251,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             .addGroup(SalirLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabelSalir)
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(366, Short.MAX_VALUE))
         );
         SalirLayout.setVerticalGroup(
             SalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,7 +275,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("©2015 Politécnico Colombiano Jaime Isaza Cadavid");
+        jLabel3.setText("©2015 Daniel Gallego, Sebastian Pernett y Andres Serna");
 
         So.setName("Hw"); // NOI18N
         So.addMouseListener(new java.awt.event.MouseAdapter() {
