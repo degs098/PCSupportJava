@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.io.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import mensajes.Mensaje;
 import mensajes.MensajeInput;
@@ -520,21 +519,25 @@ public class Usuarios extends javax.swing.JPanel {
         String psw = jPasswordFieldclave.getText();
 
         if (usuario.length() == 0) {
-            JOptionPane.showMessageDialog(null, "Campo de usuario vacío", "Error", 0);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Campo de usuario vacío", 0);
+            mesaje.setVisible(true);
         } else {
             int limite = 8;
             if (usuario.length() >= limite) {
                 evt.consume();
                 if (nombre.length() == 0) {
-                    JOptionPane.showMessageDialog(null, "Campo de nombre vacío ", "Error", 0);
+                    mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Campo de nombre vacío ", 0);
+                    mesaje.setVisible(true);
                 } else {
                     if (psw.length() == 0) {
-                        JOptionPane.showMessageDialog(null, "Campo de clave vacía", "Error", 0);
+                        mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "Campo de clave vacía", 0);
+                        mesaje.setVisible(true);
                     } else {
                         if (psw.length() >= limite) {
                             evt.consume();
                             if (nombre.equals(psw)) {
-                                JOptionPane.showMessageDialog(null, "La clave no puede ser el nombre", "Error", 0);
+                                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "La clave no puede ser el nombre", 0);
+                                mesaje.setVisible(true);
                             } else {
                                 Actualizar(jTextFieldUsuario.getText(), jTextFieldNombre.getText(), jPasswordFieldclave.getText(), (String) jComboBoxPerfil.getSelectedItem(), (String) jComboBoxEstado.getSelectedItem());
                                 jTextFieldID1.setText("");
@@ -543,12 +546,14 @@ public class Usuarios extends javax.swing.JPanel {
                                 jPasswordFieldclave.setText("");
                             }
                         } else {
-                            JOptionPane.showMessageDialog(null, "La clave debe contener mínimo 8 caracteres", "Error", 0);
+                            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "La clave debe contener mínimo 8 caracteres", 0);
+                            mesaje.setVisible(true);
                         }
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "El usuario debe contener mínimo 8 caracteres", "Error", 0);
+                mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "El usuario debe contener mínimo 8 caracteres", 0);
+                mesaje.setVisible(true);
             }
         }
     }//GEN-LAST:event_jPanelActualizarMouseClicked
@@ -572,7 +577,8 @@ public class Usuarios extends javax.swing.JPanel {
         int k = (int) evt.getKeyChar();
         if (k > 47 && k < 58) {
             evt.setKeyChar((char) KeyEvent.VK_CLEAR);
-            JOptionPane.showMessageDialog(null, "No puede ingresar numeros!!!", "Ventana Error Datos", JOptionPane.ERROR_MESSAGE);
+            mesaje = new Mensaje((JFrame) getRootPane().getParent(), true, "No puede ingresar numeros!!!", 0);
+            mesaje.setVisible(true);
         }
         if (k == 10) {
             jTextFieldNombre.transferFocus();

@@ -4,12 +4,16 @@
  */
 package interfaz;
 
+import BaseDatos.conexion;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import mensajes.MensajeConfirmacion;
 
 /**
@@ -30,6 +34,7 @@ public class InicioSoporte extends javax.swing.JFrame {
     Bienvenida B = new Bienvenida();
     Usuarios U = new Usuarios();
     Administracion A = new Administracion();
+    Connection con = new conexion().getCon();
     
     MensajeConfirmacion men;
    
@@ -48,6 +53,7 @@ public class InicioSoporte extends javax.swing.JFrame {
         contentPane.add(so);               
         contentPane.add(B);
         contentPane.add(U);
+        contentPane.add(A);
 
 
         setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());
@@ -57,13 +63,15 @@ public class InicioSoporte extends javax.swing.JFrame {
         rd.setVisible(false);
         so.setVisible(false);        
         U.setVisible(false);
+        A.setVisible(false);
         
 
         hw.setBounds(459, 75, 667, 590);
         sw.setBounds(459, 75, 667, 590);
         rd.setBounds(459, 75, 667, 590);
         so.setBounds(459, 75, 667, 590);
-        B.setBounds(459, 75, 668, 590);         
+        B.setBounds(459, 75, 668, 590);
+        A.setBounds(459, 75, 668, 590);
      
          
     }
@@ -622,7 +630,18 @@ public class InicioSoporte extends javax.swing.JFrame {
     }//GEN-LAST:event_CerrarSesionMouseExited
 
     private void AdminSolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminSolMouseClicked
-        JOptionPane.showMessageDialog(null, "Has abierto el panel de Administración");
+         B.setVisible(false);
+        rd.setVisible(false);
+        hw.setVisible(false);
+        sw.setVisible(false);
+        so.setVisible(false);
+        U.setVisible(false);
+        A.setVisible(true);
+        try {
+            con.commit();
+        } catch (SQLException ex) {
+            Logger.getLogger(InicioAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_AdminSolMouseClicked
 
     private void AdminSolMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminSolMouseEntered

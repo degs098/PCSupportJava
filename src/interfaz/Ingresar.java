@@ -4,13 +4,13 @@
  */
 package interfaz;
 
+import com.sun.glass.events.KeyEvent;
 import entidades.Usuario;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import mensajes.Mensaje;
 import negocios.UsuarioN;
 import static persistencia.SQLHelper.getValidarIngreso;
@@ -63,6 +63,12 @@ public class Ingresar extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Usuario:");
+
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyTyped(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -126,11 +132,11 @@ public class Ingresar extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelCancelarMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelCancelarMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLabelCancelarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelCancelarMouseEntered(evt);
             }
         });
 
@@ -150,6 +156,12 @@ public class Ingresar extends javax.swing.JPanel {
                 .addComponent(jLabelCancelar)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        txtClave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtClaveKeyTyped(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Help.png"))); // NOI18N
 
@@ -172,7 +184,7 @@ public class Ingresar extends javax.swing.JPanel {
                                 .addGap(73, 73, 73)
                                 .addComponent(jLabel1))
                             .addComponent(jLabel3))))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,7 +219,7 @@ public class Ingresar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -253,6 +265,42 @@ public class Ingresar extends javax.swing.JPanel {
 
     private void AceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AceptarMouseClicked
         // TODO add your handling code here:
+       aceptar();
+    }//GEN-LAST:event_AceptarMouseClicked
+
+    private void jLabelCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCancelarMouseClicked
+        super.setVisible(false);
+        Bienvenida b = new Bienvenida();
+        b.setVisible(true);
+        txtUsuario.setText("");
+        txtClave.setText("");
+    }//GEN-LAST:event_jLabelCancelarMouseClicked
+
+    private void jLabelCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCancelarMouseEntered
+        CancelarMouseEntered(evt);
+    }//GEN-LAST:event_jLabelCancelarMouseEntered
+
+    private void jLabelCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCancelarMouseExited
+        CancelarMouseExited(evt);
+    }//GEN-LAST:event_jLabelCancelarMouseExited
+
+    private void txtClaveKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveKeyTyped
+        // TODO add your handling code here:
+        char cTeclaPresionada =evt.getKeyChar();
+        if(cTeclaPresionada==KeyEvent.VK_ENTER){
+            aceptar();
+        }
+    }//GEN-LAST:event_txtClaveKeyTyped
+
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+        // TODO add your handling code here:
+        char cTeclaPresionada =evt.getKeyChar();
+        if(cTeclaPresionada==KeyEvent.VK_ENTER){
+            aceptar();
+        }
+    }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    public void aceptar(){
         String user = txtUsuario.getText();
         String pwd = txtClave.getText();
         UsuarioN un = new UsuarioN();
@@ -289,23 +337,7 @@ public class Ingresar extends javax.swing.JPanel {
 
             }
         }
-    }//GEN-LAST:event_AceptarMouseClicked
-
-    private void jLabelCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCancelarMouseClicked
-        super.setVisible(false);
-        Bienvenida b = new Bienvenida();
-        b.setVisible(true);
-        txtUsuario.setText("");
-        txtClave.setText("");
-    }//GEN-LAST:event_jLabelCancelarMouseClicked
-
-    private void jLabelCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCancelarMouseEntered
-        CancelarMouseEntered(evt);
-    }//GEN-LAST:event_jLabelCancelarMouseEntered
-
-    private void jLabelCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCancelarMouseExited
-        CancelarMouseExited(evt);
-    }//GEN-LAST:event_jLabelCancelarMouseExited
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Aceptar;
     private javax.swing.JPanel Cancelar;
