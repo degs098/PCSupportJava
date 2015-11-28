@@ -53,6 +53,11 @@ public class Ingresar extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(0, 106, 193));
         setPreferredSize(new java.awt.Dimension(650, 530));
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
@@ -299,6 +304,13 @@ public class Ingresar extends javax.swing.JPanel {
             aceptar();
         }
     }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+        char cTeclaPresionada =evt.getKeyChar();
+        if(cTeclaPresionada==KeyEvent.VK_ENTER){
+            aceptar();
+        }
+    }//GEN-LAST:event_formKeyTyped
 
     public void aceptar(){
         String user = txtUsuario.getText();

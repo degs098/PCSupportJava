@@ -4,6 +4,7 @@
  */
 package mensajes;
 
+import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
@@ -78,6 +79,11 @@ public class Mensaje extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
 
         Aceptar.setBackground(new java.awt.Color(0, 106, 193));
         Aceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
@@ -156,6 +162,16 @@ public class Mensaje extends javax.swing.JDialog {
         }
         this.dispose();
     }//GEN-LAST:event_AceptarMouseClicked
+
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+        char cTeclaPresionada = evt.getKeyChar();
+        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
+            if (fondoGris.isVisible()) {
+                fondoGris.dispose();
+            }
+            this.dispose();
+        }
+    }//GEN-LAST:event_formKeyTyped
 
     /**
      * @param args the command line arguments
