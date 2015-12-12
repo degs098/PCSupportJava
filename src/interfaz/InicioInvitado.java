@@ -9,7 +9,6 @@ import java.awt.Container;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import mensajes.MensajeConfirmacion;
 
 /**
@@ -26,19 +25,19 @@ public class InicioInvitado extends javax.swing.JFrame {
     Software sw = new Software();
     Hardware hw = new Hardware();
     Redes rd = new Redes();
-    SistemaOperativo so = new SistemaOperativo();    
+    SistemaOperativo so = new SistemaOperativo();
     Ingresar lg = new Ingresar();
     Bienvenida B = new Bienvenida();
     Usuarios U = new Usuarios();
-    
+
     MensajeConfirmacion men;
-   
+
+    String sSistemaOperativo = System.getProperty("os.name");
+
     public InicioInvitado() {
         initComponents();
         super.setLocationRelativeTo(null);
         super.setBackground(Color.white);
-
-
 
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
@@ -46,10 +45,9 @@ public class InicioInvitado extends javax.swing.JFrame {
         contentPane.add(hw);
         contentPane.add(rd);
         contentPane.add(so);
-        contentPane.add(lg);        
+        contentPane.add(lg);
         contentPane.add(B);
         contentPane.add(U);
-
 
         setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());
         B.setVisible(true);
@@ -59,15 +57,22 @@ public class InicioInvitado extends javax.swing.JFrame {
         so.setVisible(false);
         lg.setVisible(false);
         U.setVisible(false);
-        
-        hw.setBounds(419, 75, 667, 590);
-        sw.setBounds(419, 75, 667, 590);
-        rd.setBounds(419, 75, 667, 590);
-        so.setBounds(419, 75, 667, 590);
-        B.setBounds(419, 75, 667, 590);
-        lg.setBounds(419, 75, 667, 590);        
-        
 
+        if (sSistemaOperativo.equals("Linux")) {
+            hw.setBounds(super.getX() + 334, super.getY(), 667, 590);
+            sw.setBounds(super.getX() + 334, super.getY(), 667, 590);
+            rd.setBounds(super.getX() + 334, super.getY(), 667, 590);
+            so.setBounds(super.getX() + 334, super.getY(), 667, 590);
+            B.setBounds(super.getX() + 334, super.getY(), 667, 590);
+            lg.setBounds(super.getX() + 334, super.getY(), 667, 590);
+        } else {
+            hw.setBounds(419, 75, 667, 590);
+            sw.setBounds(419, 75, 667, 590);
+            rd.setBounds(419, 75, 667, 590);
+            so.setBounds(419, 75, 667, 590);
+            B.setBounds(419, 75, 667, 590);
+            lg.setBounds(419, 75, 667, 590);
+        }
     }
 
     /**
@@ -473,9 +478,9 @@ public class InicioInvitado extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirMouseExited
 
     private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
-        
-        men =new MensajeConfirmacion((JFrame) getRootPane().getParent(), true, "¿Está seguro que desea cerrar la aplicación?", 0);
-        men.setVisible(true);       
+
+        men = new MensajeConfirmacion((JFrame) getRootPane().getParent(), true, "¿Está seguro que desea cerrar la aplicación?", 0);
+        men.setVisible(true);
     }//GEN-LAST:event_SalirMouseClicked
 
     private void LoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseEntered
@@ -498,7 +503,7 @@ public class InicioInvitado extends javax.swing.JFrame {
         sw.setVisible(true);
         so.setVisible(false);
         lg.setVisible(false);
-        
+
     }//GEN-LAST:event_SwMouseClicked
 
     private void HwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HwMouseClicked
@@ -508,7 +513,7 @@ public class InicioInvitado extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(false);
-        
+
     }//GEN-LAST:event_HwMouseClicked
 
     private void RdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RdMouseClicked
@@ -518,7 +523,7 @@ public class InicioInvitado extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(false);
-        
+
     }//GEN-LAST:event_RdMouseClicked
 
     private void jLabelLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseClicked
@@ -528,7 +533,7 @@ public class InicioInvitado extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(true);
-        
+
 
     }//GEN-LAST:event_jLabelLoginMouseClicked
 
@@ -538,9 +543,8 @@ public class InicioInvitado extends javax.swing.JFrame {
         hw.setVisible(false);
         sw.setVisible(false);
         so.setVisible(false);
-        lg.setVisible(true);        
+        lg.setVisible(true);
 
-        
 
     }//GEN-LAST:event_LoginMouseClicked
 
@@ -563,7 +567,7 @@ public class InicioInvitado extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(false);
-        
+
 
     }//GEN-LAST:event_PC_SupportMouseClicked
 
@@ -574,7 +578,7 @@ public class InicioInvitado extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(false);
         lg.setVisible(false);
-        
+
     }//GEN-LAST:event_LogoMouseClicked
 
     private void SoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoMouseClicked
@@ -584,7 +588,7 @@ public class InicioInvitado extends javax.swing.JFrame {
         sw.setVisible(false);
         so.setVisible(true);
         lg.setVisible(false);
-       
+
     }//GEN-LAST:event_SoMouseClicked
 
     private void SoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoMouseEntered
@@ -604,7 +608,7 @@ public class InicioInvitado extends javax.swing.JFrame {
     }//GEN-LAST:event_LogoMouseEntered
 
     private void LogoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoMouseExited
-       setCursor(Cursor.DEFAULT_CURSOR);
+        setCursor(Cursor.DEFAULT_CURSOR);
     }//GEN-LAST:event_LogoMouseExited
 
     private void PC_SupportMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC_SupportMouseEntered

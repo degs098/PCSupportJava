@@ -30,50 +30,56 @@ public class InicioSoporte extends javax.swing.JFrame {
     Software sw = new Software();
     Hardware hw = new Hardware();
     Redes rd = new Redes();
-    SistemaOperativo so = new SistemaOperativo();        
+    SistemaOperativo so = new SistemaOperativo();
     Bienvenida B = new Bienvenida();
     Usuarios U = new Usuarios();
     Administracion A = new Administracion();
     Connection con = new conexion().getCon();
-    
+
     MensajeConfirmacion men;
-   
+
+    String sSistemaOperativo = System.getProperty("os.name");
+
     public InicioSoporte() {
         initComponents();
         super.setLocationRelativeTo(null);
         super.setBackground(Color.white);
-
-
 
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
         contentPane.add(sw);
         contentPane.add(hw);
         contentPane.add(rd);
-        contentPane.add(so);               
+        contentPane.add(so);
         contentPane.add(B);
         contentPane.add(U);
         contentPane.add(A);
-
 
         setIconImage(new ImageIcon(getClass().getResource(ruta + "Help.png")).getImage());
         B.setVisible(true);
         hw.setVisible(false);
         sw.setVisible(false);
         rd.setVisible(false);
-        so.setVisible(false);        
+        so.setVisible(false);
         U.setVisible(false);
         A.setVisible(false);
-        
 
-        hw.setBounds(459, 75, 667, 590);
-        sw.setBounds(459, 75, 667, 590);
-        rd.setBounds(459, 75, 667, 590);
-        so.setBounds(459, 75, 667, 590);
-        B.setBounds(459, 75, 668, 590);
-        A.setBounds(459, 75, 668, 590);
-     
-         
+        if (sSistemaOperativo.equals("Linux")) {
+            hw.setBounds(super.getX() + 402, super.getY(), 667, 590);
+            sw.setBounds(super.getX() + 402, super.getY(), 667, 590);
+            rd.setBounds(super.getX() + 402, super.getY(), 667, 590);
+            so.setBounds(super.getX() + 402, super.getY(), 667, 590);
+            B.setBounds(super.getX() + 402, super.getY(), 668, 590);
+            A.setBounds(super.getX() + 402, super.getY(), 668, 590);
+        } else {
+            hw.setBounds(459, 75, 667, 590);
+            sw.setBounds(459, 75, 667, 590);
+            rd.setBounds(459, 75, 667, 590);
+            so.setBounds(459, 75, 667, 590);
+            B.setBounds(459, 75, 668, 590);
+            A.setBounds(459, 75, 668, 590);
+        }
+
     }
 
     /**
@@ -519,7 +525,7 @@ public class InicioSoporte extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirMouseExited
 
     private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
-        men =new MensajeConfirmacion((JFrame) getRootPane().getParent(), true, "¿Está seguro que desea cerrar la aplicación?", 0);
+        men = new MensajeConfirmacion((JFrame) getRootPane().getParent(), true, "¿Está seguro que desea cerrar la aplicación?", 0);
         men.setVisible(true);
     }//GEN-LAST:event_SalirMouseClicked
 
@@ -555,7 +561,7 @@ public class InicioSoporte extends javax.swing.JFrame {
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(false);
-        so.setVisible(false);      
+        so.setVisible(false);
         U.setVisible(false);
     }//GEN-LAST:event_PC_SupportMouseClicked
 
@@ -565,7 +571,7 @@ public class InicioSoporte extends javax.swing.JFrame {
         hw.setVisible(false);
         sw.setVisible(false);
         so.setVisible(false);
-        U.setVisible(false);        
+        U.setVisible(false);
     }//GEN-LAST:event_LogoMouseClicked
 
     private void SoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoMouseClicked
@@ -617,7 +623,7 @@ public class InicioSoporte extends javax.swing.JFrame {
 
     private void CerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseEntered
         // TODO add your handling code here:
-         CerrarSesion.setBackground(new java.awt.Color(244, 244, 244));
+        CerrarSesion.setBackground(new java.awt.Color(244, 244, 244));
         jLabelCerrarSesion.setForeground(Color.BLACK);
         setCursor(Cursor.HAND_CURSOR);
     }//GEN-LAST:event_CerrarSesionMouseEntered
@@ -630,7 +636,7 @@ public class InicioSoporte extends javax.swing.JFrame {
     }//GEN-LAST:event_CerrarSesionMouseExited
 
     private void AdminSolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminSolMouseClicked
-         B.setVisible(false);
+        B.setVisible(false);
         rd.setVisible(false);
         hw.setVisible(false);
         sw.setVisible(false);
